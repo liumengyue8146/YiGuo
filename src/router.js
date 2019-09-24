@@ -6,38 +6,38 @@ import Category from './views/home/category/index.vue'
 import Eat from './views/home/eat/index.vue'
 import Cart from './views/home/cart/index.vue'
 import Me from './views/home/me/index.vue'
+import Login from './views/Login.vue'
+import Sinup from './views/Sinup.vue'
+Login
+
 Vue.use(Router);
 
 export default new Router({
-    routes: [{
+    routes: [
+        //引导页路由
+        {
             path: '/',
             name: 'beforeLogin',
             component: BeforeLogin,
-        },
-        {
-
-            //分类
-            name: 'category',
-            path: '/category',
-            component: Category,
             meta: {
                 keepAlive: true,
             },
-
         },
+        //首页路由
         {
             path: '/home',
             name: 'home',
-            // route level code-splitting
-            // this generates a separate chunk (about.[hash].js) for this route
-            // which is lazy-loaded when the route is visited.
-            // component: () =>
-            //     import ( /* webpackChunkName: "about" */ './views/home/Home.vue'),
             component: Home,
             meta: {
                 keepAlive: true,
             },
-            children: [
+            children: [{
+                    //分类
+                    name: 'category',
+                    path: '/category',
+                    component: Category,
+
+                },
                 //吃饭吧
                 {
                     name: 'eat',
@@ -59,5 +59,22 @@ export default new Router({
             ],
 
         },
+        {
+            path: '/login',
+            name: 'login',
+            component: Login,
+            meta: {
+                keepAlive: true,
+            },
+        },
+        {
+            path: '/sinup',
+            name: 'sinup',
+            component: Sinup,
+            meta: {
+                keepAlive: true,
+            },
+        },
+
     ],
 });
