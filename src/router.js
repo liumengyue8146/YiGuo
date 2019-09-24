@@ -2,6 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import BeforeLogin from './views/beforeLogin';
 import Home from './views/home/Home.vue'
+import Homesmall from './views/home/homesmall/index.vue'
 import Category from './views/home/category/index.vue'
 import Eat from './views/home/eat/index.vue'
 import Cart from './views/home/cart/index.vue'
@@ -32,11 +33,17 @@ export default new Router({
                 keepAlive: true,
             },
             children: [{
+                    // 首页
+                    name: 'homesmall',
+                    path: '/homesmall',
+                    component: Homesmall,
+
+                },
+                {
                     //分类
                     name: 'category',
                     path: '/category',
                     component: Category,
-
                 },
                 //吃饭吧
                 {
