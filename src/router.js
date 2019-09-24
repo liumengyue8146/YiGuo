@@ -8,7 +8,8 @@ import Cart from './views/home/cart/index.vue';
 import Me from './views/home/me/index.vue';
 import Login from './views/Login.vue';
 import Sinup from './views/Sinup.vue';
-Login;
+import payforOrder from './views/payforOrder.vue';
+//Login;
 
 Vue.use(Router);
 
@@ -19,6 +20,15 @@ export default new Router({
       path: '/',
       name: 'beforeLogin',
       component: BeforeLogin,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    // 订单结算payforOrder
+    {
+      path: '/payforOrder',
+      name: 'payforOrder',
+      component: PayforOrder,
       meta: {
         keepAlive: true,
       },
