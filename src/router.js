@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import BeforeLogin from './views/beforeLogin';
+
 import Home from './views/home/Home.vue'
 import Homesmall from './views/home/homesmall/index.vue'
 import Category from './views/home/category/index.vue'
@@ -9,7 +10,8 @@ import Cart from './views/home/cart/index.vue'
 import Me from './views/home/me/index.vue'
 import Login from './views/Login.vue'
 import Sinup from './views/Sinup.vue'
-Login
+
+
 
 Vue.use(Router);
 
@@ -24,8 +26,9 @@ export default new Router({
                 keepAlive: true,
             },
         },
-        //首页路由
+
         {
+
             path: '/home',
             name: 'home',
             component: Home,
@@ -65,7 +68,9 @@ export default new Router({
                 },
             ],
 
+
         },
+        // 登录
         {
             path: '/login',
             name: 'login',
@@ -74,6 +79,7 @@ export default new Router({
                 keepAlive: true,
             },
         },
+        //注册
         {
             path: '/sinup',
             name: 'sinup',
@@ -82,6 +88,5 @@ export default new Router({
                 keepAlive: true,
             },
         },
-
     ],
 });
