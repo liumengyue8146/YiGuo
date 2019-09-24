@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    首页
     <router-view />
     <van-tabbar route>
       <van-tabbar-item :to="{name:'home'}" icon="home-o">首页</van-tabbar-item>
