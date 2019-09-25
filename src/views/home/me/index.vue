@@ -2,6 +2,7 @@
   <!-- 我的 -->
   <div class="app">
     <!-- top -->
+    <!-- 1 -->
     <div class="top">
       <div class="top1">
         <van-icon name="point-gift-o" />
