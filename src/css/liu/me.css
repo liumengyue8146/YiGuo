@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.app {
+  height: 100%;
+  width: 100%;
+  background: #f4f4f4;
+}
+.top {
+  height: 160px;
+  width: 100%;
+  background: lightblue;
+  color: #fff;
+}
+.top1 {
+  height: 35px;
+  width: 100%;
+  background: #6de3a5;
+  text-align: right;
+}
+.top1 .van-icon {
+  margin: 0 15px;
+  margin-top: 5px;
+  font-size: 22px;
+}
+.top2 {
+  height: 120px;
+  width: 100%;
+  background: #42d58d;
+  position: relative;
+}
+.top2 .left {
+  position: absolute;
+  left: 20px;
+  top: 15px;
+}
+.top2 .left img {
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+}
+.top2 .right {
+  text-align: left;
+  position: absolute;
+  left: 120px;
+  top: 20px;
+}
+.top2 .right2 {
+  position: absolute;
+  right: 0px;
+  top: 25px;
+  height: 40px;
+  width: 100px;
+  background: #c4f8e5;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 5px;
+  color: #10b37a;
+}
+.jifen {
+  display: flex;
+  justify-content: space-around;
+  background: #fff;
+}
+.jifen dl {
+  height: 40px;
+  width: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.jifen dl dt {
+  color: #43aa74;
+}
+.jifen dl dd {
+  margin: 0;
+  width: 50px;
+  font-size: 12px;
+}
+.status {
+  display: flex;
+  height: 50px;
+  width: 100%;
+  background: #fff;
+  margin: 15px 0;
+  align-items: center;
+  justify-content: space-around;
+}
+.status dl {
+  display: flex;
+  flex-direction: column;
+}
+.status dl dt i {
+  font-size: 22px;
+}
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  background: #fff;
+}
+.bottom dl {
+  width: 24%;
+  height: 70px;
+  margin: 7px 0;
+}
