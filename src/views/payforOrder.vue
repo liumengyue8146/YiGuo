@@ -1,4 +1,5 @@
 <template>
+  <!-- 订单结算页 -->
   <div class="app">
     <!-- top -->
     <van-sticky>
@@ -41,6 +42,28 @@
           </template>
         </van-cell>
       </div>
+      <!-- 合计 -->
+      <div class="middle">
+        <van-cell-group>
+          <van-cell title="商品合计" value="￥300" />
+          <van-cell title="运费" value="￥10" />
+          <van-cell title="优惠活动" value="￥100" />
+        </van-cell-group>
+      </div>
+      <!-- 应付金额 -->
+      <div class="middle">
+        <van-cell-group>
+          <van-cell title="应付金额" value="￥210" />
+        </van-cell-group>
+      </div>
+      <!-- 结算 -->
+      <div class="allprice">
+        <p>
+          应付金额
+          <em>￥537.12</em>
+        </p>
+        <a>去结算</a>
+      </div>
     </div>
   </div>
 </template>
@@ -50,6 +73,44 @@
   height: 100%;
   width: 100%;
   background: #eee;
+}
+.allprice {
+  position: relative;
+  height: 50px;
+  width: 100%;
+}
+.allprice p {
+  position: absolute;
+  right: 150px;
+  width: 136px;
+  height: 21px;
+  font-size: 15px;
+  font-family: PingFang SC;
+  font-weight: 600;
+  line-height: 21px;
+
+  opacity: 1;
+}
+.allprice {
+  height: 50px;
+  width: 100%;
+  background: #fff;
+}
+.allprice p em {
+  color: rgba(252, 113, 99, 1);
+  font-style: normal;
+}
+.allprice a {
+  position: absolute;
+  right: 0;
+  font-size: 18px;
+  color: #fff;
+  text-align: center;
+  line-height: 54px;
+  width: 148px;
+  height: 54px;
+  background: rgba(254, 100, 84, 1);
+  opacity: 1;
 }
 .middle {
   margin: 5px 0;
@@ -78,7 +139,7 @@
   line-break: 50px;
   height: 60px;
   margin-top: 3px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   width: 100%;
   background: rgb(255, 255, 255);
 }
@@ -99,7 +160,7 @@
   text-align: left;
 }
 .goods {
-  height: 100px;
+  height: 50px;
   width: 100%;
   background: pink;
 }

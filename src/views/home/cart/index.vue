@@ -7,7 +7,7 @@
 
     <!--  @click-left="onClickLeft"
     @click-right="onClickRight"-->
-    <hr />
+
     <div class="card">
       <div class="card1">
         <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
@@ -15,6 +15,7 @@
           class="right"
           align="left"
           price="2.00"
+          desc="123456"
           title="商品标题描述信息描述信息描述信息描述信息描述信息"
           thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
         >
@@ -142,6 +143,10 @@ export default {
 .app {
   display: flex;
   flex-direction: column;
+}
+.card1 {
+  display: flex;
+  justify-content: space-around;
 }
 .allPrice {
   position: relative;
