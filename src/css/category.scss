@@ -1,0 +1,81 @@
+a,
+span,
+body,
+p,
+ul,
+li,
+i,
+em,
+h1,
+h2,
+h3,
+h4,
+h5 {
+  margin: 0;
+  padding: 0;
+}
+.clearBoth {
+  clear: both;
+}
+img {
+  display: block;
+}
+html,
+body,
+#app {
+  height: 100%;
+}
+.home {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.van-tabbar--fixed {
+  position: static;
+}
+.category {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
+}
+.mainContent {
+  height: 100%;
+  flex: 1;
+  display: flex;
+}
+.left {
+  width: 20%;
+  height: 100%;
+}
+.right {
+  width: 80%;
+  height: 100%;
+  flex: 1;
+  overflow: auto;
+}
+.van-sidebar {
+  width: 100%;
+  height: 100%;
+  background: #f4f4f4;
+}
+.goodsList {
+  width: 33.3%;
+  height: 150px;
+  overflow: hidden;
+  float: left;
+}
+.goodsList img {
+  width: 80%;
+  height: 80px;
+  margin-left: 10%;
+  margin-top: 10px;
+}
+.goodsList p {
+  width: 100%;
+  line-height: 30px;
+  text-align: center;
+  font-size: 16px;
+  margin-top: 30px;
+  color: #7d7e80;
+}
