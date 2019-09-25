@@ -138,7 +138,6 @@ export default {
 </script>
 
 <style scoped>
-/* @import "../../../"; */
 .app {
   display: flex;
   flex-direction: column;
@@ -238,4 +237,7 @@ export default {
 .app {
   background: #f4f4f4;
 }
+
+
+
 </style>
