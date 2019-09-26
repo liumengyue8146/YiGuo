@@ -23,6 +23,7 @@ import PayforOrder from './views/payforOrder.vue';
 import NewAddress from './views/newAddress.vue';
 import AddressList from './views/addressList.vue';
 import HelpCenter from './views/helpCenter.vue';
+import TheNewGood from './views/TheNewGood.vue';
 // Login;
 
 // eslint-disable-next-line import/no-unresolved
@@ -44,6 +45,15 @@ export default new Router({
       path: '/helpCenter',
       name: 'helpCenter',
       component: HelpCenter,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    // 新品荟萃liu
+    {
+      path: '/theNewGood',
+      name: 'theNewGood',
+      component: TheNewGood,
       meta: {
         keepAlive: true,
       },
