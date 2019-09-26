@@ -3,7 +3,9 @@
 import Vue from 'vue';
 // eslint-disable-next-line import/no-unresolved
 import Router from 'vue-router';
-// import BeforeLogin from './views/beforeLogin';
+// eslint-disable-next-line import/no-unresolved
+import BeforeLogin from './views/beforeLogin';
+// eslint-disable-next-line import/no-unresolved
 import Home from './views/home/Home.vue';
 // eslint-disable-next-line import/no-unresolved
 import Category from './views/home/category/index.vue';
@@ -17,14 +19,6 @@ import Me from './views/home/me/index.vue';
 import Login from './views/Login.vue';
 // eslint-disable-next-line import/no-unresolved
 import Sinup from './views/Sinup.vue';
-
-import PayforOrder from './views/payforOrder.vue';
-
-import NewAddress from './views/newAddress.vue';
-import AddressList from './views/addressList.vue';
-import HelpCenter from './views/helpCenter.vue';
-// Login;
-
 // eslint-disable-next-line import/no-unresolved
 import Detail from './views/home/category/detail.vue';
 // eslint-disable-next-line no-unused-vars
@@ -39,39 +33,10 @@ Vue.use(Router);
 export default new Router({
   routes: [
     // 引导页路由
-
     {
-      path: '/helpCenter',
-      name: 'helpCenter',
-      component: HelpCenter,
-      meta: {
-        keepAlive: true,
-      },
-    },
-    // 收获地址列表addressList
-    {
-      path: '/addressList',
-      name: 'addressList',
-      component: AddressList,
-      meta: {
-        keepAlive: true,
-      },
-    },
-    // 新增收获地址newAddress
-    {
-      path: '/newAddress',
-      name: 'newAddress',
-      component: NewAddress,
-      meta: {
-        keepAlive: true,
-      },
-    },
-
-    // 订单结算payforOrder
-    {
-      path: '/payforOrder',
-      name: 'payforOrder',
-      component: PayforOrder,
+      path: '/',
+      name: 'beforeLogin',
+      component: BeforeLogin,
       meta: {
         keepAlive: true,
       },
