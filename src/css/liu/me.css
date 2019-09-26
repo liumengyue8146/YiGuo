@@ -65,17 +65,17 @@
 }
 .jifen dl {
   height: 40px;
-  width: 50px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  align-items: center;
 }
 .jifen dl dt {
   color: #43aa74;
 }
 .jifen dl dd {
   margin: 0;
-  width: 50px;
   font-size: 12px;
 }
 .status {
@@ -90,6 +90,8 @@
 .status dl {
   display: flex;
   flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }
 .status dl dt i {
   font-size: 22px;
@@ -98,9 +100,26 @@
   display: flex;
   flex-wrap: wrap;
   background: #fff;
+  justify-content: space-around;
 }
+.bottom dl a {
+  display: block;
+  width: 100%;
+  height: 70px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+/* color: #000; */
 .bottom dl {
+  display: block;
   width: 24%;
   height: 70px;
   margin: 7px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
 }

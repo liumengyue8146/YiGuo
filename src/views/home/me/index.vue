@@ -93,16 +93,20 @@
         <dd>提货券</dd>
       </dl>
       <dl to="/cart" info="99+">
-        <dt>
-          <img src="@/assets/01.png" />
-        </dt>
-        <dd>收获地址</dd>
+        <router-link :to="{name:'addressList'}">
+          <dt>
+            <img src="@/assets/01.png" />
+          </dt>
+          <dd>收获地址</dd>
+        </router-link>
       </dl>
       <dl to="/cart" info="99+">
-        <dt>
-          <img src="@/assets/01.png" />
-        </dt>
-        <dd>帮助中心</dd>
+        <router-link :to="{name:'helpCenter'}">
+          <dt>
+            <img src="@/assets/01.png" />
+          </dt>
+          <dd>帮助中心</dd>
+        </router-link>
       </dl>
       <dl to="/cart" info="99+">
         <dt>
@@ -135,18 +139,19 @@
         <dd>悠币商城</dd>
       </dl>
       <dl to="/cart" info="99+">
+        <router-link :to="{name:'memberEnjoy'}">
+          <dt>
+            <img src="@/assets/01.png" />
+          </dt>
+          <dd>会员尊享</dd>
+        </router-link>
+      </dl>
+      <dl to="/cart" info="99+">
         <dt>
           <img src="@/assets/01.png" />
         </dt>
         <dd>企业福利</dd>
       </dl>
-      <!-- <van-grid square>
-          <van-grid-item v-for="value in 10" :key="value" icon="apps-o" text="全部订单" />
-      </van-grid>-->
-      <!-- <van-grid :column-num="4">
-          <van-grid-item icon="../src/assets/01.png" text="文字" />
-          <van-grid-item icon="https://b.yzcdn.cn/vant/icon-demo-1126.png" text="文字" info="99+" />
-      </van-grid>-->
     </div>
   </div>
 </template>
