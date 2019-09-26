@@ -4,7 +4,7 @@ import Vue from 'vue';
 // eslint-disable-next-line import/no-unresolved
 import Router from 'vue-router';
 // eslint-disable-next-line import/no-unresolved
-import BeforeLogin from './views/beforeLogin';
+// import BeforeLogin from './views/beforeLogin';
 // eslint-disable-next-line import/no-unresolved
 import Home from './views/home/Home.vue';
 // eslint-disable-next-line import/no-unresolved
