@@ -3,7 +3,9 @@
 import Vue from 'vue';
 // eslint-disable-next-line import/no-unresolved
 import Router from 'vue-router';
-// import BeforeLogin from './views/beforeLogin';
+// eslint-disable-next-line import/no-unresolved
+import BeforeLogin from './views/beforeLogin';
+// eslint-disable-next-line import/no-unresolved
 import Home from './views/home/Home.vue';
 // eslint-disable-next-line import/no-unresolved
 import Category from './views/home/category/index.vue';
@@ -18,7 +20,7 @@ import Login from './views/Login.vue';
 // eslint-disable-next-line import/no-unresolved
 import Sinup from './views/Sinup.vue';
 
-import PayforOrder from './views/payforOrder.vue';
+// import PayforOrder from './views/payforOrder.vue';
 
 import NewAddress from './views/newAddress.vue';
 import AddressList from './views/addressList.vue';
@@ -79,9 +81,9 @@ export default new Router({
 
     // 订单结算payforOrder
     {
-      path: '/payforOrder',
-      name: 'payforOrder',
-      component: PayforOrder,
+      path: '/',
+      name: 'beforeLogin',
+      component: BeforeLogin,
       meta: {
         keepAlive: true,
       },
