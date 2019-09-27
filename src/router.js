@@ -15,6 +15,14 @@ import Me from './views/home/me/index.vue'
 import Login from './views/Login.vue'
 import Sinup from './views/Sinup.vue'
 
+import Zuomeishi from './views/home/eat/zuomeishi.vue'
+import Zhangzhishi from './views/home/eat/zhangzhishi.vue'
+import Shenghuojia from './views/home/eat/shenghuojia.vue'
+
+
+
+
+
 
 
 // liu
@@ -70,6 +78,22 @@ export default new Router({
             meta: {
                 keepAlive: true,
             },
+            children: [{
+                    name: 'zuomeishi',
+                    path: '/zuomeishi',
+                    component: Zuomeishi,
+                },
+                {
+                    name: 'zhangzhishi',
+                    path: '/zhangzhishi',
+                    component: Zhangzhishi,
+                },
+                {
+                    name: 'shenghuojia',
+                    path: '/shenghuojia',
+                    component: Shenghuojia,
+                }
+            ]
 
         },
         {

@@ -10,7 +10,7 @@
     </van-tabbar>
   </div>
 </template>
-<style>
+<style scoped>
 #app .van-tabbar {
   position: fixed;
   left: 0;
@@ -18,3 +18,4 @@
   width: 100%;
 }
 </style>
+
