@@ -10,5 +10,12 @@
     </van-tabbar>
   </div>
 </template>
+<style scoped>
+.bottom {
+  height: 50px;
+}
+</style>
+
+
 
 
