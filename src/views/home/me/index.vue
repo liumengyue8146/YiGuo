@@ -5,7 +5,9 @@
     <!-- 1 -->
     <div class="top">
       <div class="top1">
-        <van-icon name="point-gift-o" />
+        <router-link :to="{name:'settings'}">
+          <van-icon name="records" />
+        </router-link>
         <van-icon name="comment-o" dot />
       </div>
       <div class="top2">
@@ -77,10 +79,12 @@
     <!-- 下面 -->
     <div class="bottom">
       <dl to="/cart" info="99+">
-        <dt>
-          <img src="@/assets/01.png" />
-        </dt>
-        <dd>优惠券</dd>
+        <router-link :to="{name:'message'}">
+          <dt>
+            <img src="@/assets/01.png" />
+          </dt>
+          <dd>优惠券</dd>
+        </router-link>
       </dl>
       <dl to="/cart" info="99+">
         <dt>

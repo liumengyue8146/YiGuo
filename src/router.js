@@ -19,10 +19,10 @@ import PayforOrder from './views/payforOrder.vue'; // 订单支付
 import NewAddress from './views/newAddress.vue'; // 新增地址
 import AddressList from './views/addressList.vue'; //  地址列表
 import HelpCenter from './views/helpCenter.vue'; // 帮助中心
-import TheNewGood from './views/TheNewGood.vue'; //  新品荟萃
+import TheNewGood from './views/TheNewGood.vue'; //  新品荟萃?
 import CoinDetails from './views/CoinDetails.vue'; // 悠币明细
-import MemberEnjoy from './views/MemberEnjoy.vue'; // 会员尊享
-import IntegralForFresh from './views/IntegralForFresh.vue'; // 积分换生鲜
+import MemberEnjoy from './views/MemberEnjoy.vue'; // 会员尊享?
+import IntegralForFresh from './views/IntegralForFresh.vue'; // 积分换生鲜?
 import GiftVoucher from './views/GiftVoucher.vue'; // 提货券
 
 // Login;
