@@ -1,12 +1,7 @@
-/* eslint-disable import/extensions */
-// eslint-disable-next-line import/no-unresolved
 import Vue from 'vue';
-// eslint-disable-next-line import/no-unresolved
 import Router from 'vue-router';
 
-import BeforeLogin from './views/beforeLogin';
-
-import Home from './views/home/Home.vue';
+// import Home from './views/home/Home.vue';
 import Homesmall from './views/home/homesmall/index.vue';
 import Category from './views/home/category/index.vue';
 import Eat from './views/home/eat/index.vue';
@@ -28,12 +23,12 @@ import TheNewGood from './views/TheNewGood.vue'; //  新品荟萃
 import CoinDetails from './views/CoinDetails.vue'; // 悠币明细
 import MemberEnjoy from './views/MemberEnjoy.vue'; // 会员尊享
 import IntegralForFresh from './views/IntegralForFresh.vue'; // 积分换生鲜
+import GiftVoucher from './views/GiftVoucher.vue'; // 提货券
+
 // Login;
 
-// eslint-disable-next-line import/no-unresolved
 import Detail from './views/home/category/detail.vue';
 import AccMang from './views/home/me/Zhagnhu.vue';
-// eslint-disable-next-line import/no-unresolved
 import Settings from './views/home/me/Settings.vue';
 import Message from './views/home/me/Message.vue';
 import Card from './views/home/me/Card.vue';
@@ -42,7 +37,6 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    // 引导页路由
     // 首页路由
     {
       path: '/',
@@ -101,7 +95,7 @@ export default new Router({
         keepAlive: true,
       },
     },
-
+    // 帮助中心
     {
       path: '/helpCenter',
       name: 'helpCenter',
@@ -110,7 +104,16 @@ export default new Router({
         keepAlive: true,
       },
     },
-    // 积分换生鲜Integral for fresh
+    // 提货券
+    {
+      path: '/giftVoucher',
+      name: 'giftVoucher',
+      component: GiftVoucher,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    // 积分换生鲜
     {
       path: '/integralForFresh',
       name: 'integralForFresh',
