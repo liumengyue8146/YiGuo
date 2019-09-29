@@ -3,7 +3,7 @@
   <div class="app">
     <!-- top -->
     <van-sticky>
-      <van-nav-bar title="订单结算" left-arrow @click-left="onClickLeft" />
+      <van-nav-bar title="帮助中心" left-arrow @click-left="onClickLeft" />
     </van-sticky>
 
     <!-- 内容 -->
