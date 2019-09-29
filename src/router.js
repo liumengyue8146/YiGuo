@@ -29,6 +29,8 @@ import TheNewGood from './views/TheNewGood.vue'; //  新品荟萃
 import CoinDetails from './views/CoinDetails.vue'; // 悠币明细
 import MemberEnjoy from './views/MemberEnjoy.vue'; // 会员尊享
 import IntegralForFresh from './views/IntegralForFresh.vue'; // 积分换生鲜
+import GiftVoucher from './views/GiftVoucher.vue'; // 提货券
+
 // Login;
 
 // eslint-disable-next-line import/no-unresolved
@@ -42,8 +44,7 @@ Vue.use(Router);
 
 export default new Router({
   routes: [
-    // 引导页路由
-
+    // 帮助中心
     {
       path: '/helpCenter',
       name: 'helpCenter',
@@ -52,7 +53,16 @@ export default new Router({
         keepAlive: true,
       },
     },
-    // 积分换生鲜Integral for fresh
+    // 提货券
+    {
+      path: '/giftVoucher',
+      name: 'giftVoucher',
+      component: GiftVoucher,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    // 积分换生鲜
     {
       path: '/integralForFresh',
       name: 'integralForFresh',
