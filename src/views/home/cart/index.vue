@@ -242,7 +242,4 @@ export default {
 .app {
   background: #f4f4f4;
 }
-
-
-
 </style>
