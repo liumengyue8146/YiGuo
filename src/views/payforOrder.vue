@@ -163,6 +163,7 @@
   height: 50px;
   width: 100%;
   background: pink;
+  display: flex;
 }
 .goods img {
   height: 50px;

@@ -140,6 +140,8 @@ export default {
 
 <style scoped>
 .app {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -241,5 +243,13 @@ export default {
 }
 .app {
   background: #f4f4f4;
+}
+.van-checkbox__label {
+  font-size: 14px;
+  color: red;
+}
+.van-checkbox {
+  font-size: 14px;
+  color: red;
 }
 </style>

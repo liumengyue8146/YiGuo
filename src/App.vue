@@ -16,6 +16,10 @@
   left: 0;
   bottom: 0;
   width: 100%;
+  font-size: 16px;
+}
+body {
+  font-size: 16px;
 }
 </style>
 
