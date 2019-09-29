@@ -67,8 +67,7 @@
     </div>
   </div>
 </template>
-
-<style   scoped>
+<style scoped>
 .app {
   height: 100%;
   width: 100%;
@@ -88,7 +87,6 @@
   font-family: PingFang SC;
   font-weight: 600;
   line-height: 21px;
-
   opacity: 1;
 }
 .allprice {

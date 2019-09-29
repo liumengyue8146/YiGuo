@@ -44,38 +44,38 @@
 export default {
   data() {
     return {
-      name: "",
+      name: '',
       tel: 0,
-      bigAddress: "",
-      smallAddress: "",
+      bigAddress: '',
+      smallAddress: '',
       radio: 1,
-      activeNames: ["1"],
+      activeNames: ['1'],
       checked: true,
       show: false,
       areaList: {
         province_list: {
-          110000: "北京市",
-          120000: "天津市"
+          110000: '北京市',
+          120000: '天津市',
         },
         city_list: {
-          110100: "北京市",
-          110200: "县",
-          120100: "天津市",
-          120200: "县"
+          110100: '北京市',
+          110200: '县',
+          120100: '天津市',
+          120200: '县',
         },
         county_list: {
-          110101: "东城区",
-          110102: "西城区",
-          110105: "朝阳区",
-          110106: "丰台区",
-          120101: "和平区",
-          120102: "河东区",
-          120103: "河西区",
-          120104: "南开区",
-          120105: "河北区"
+          110101: '东城区',
+          110102: '西城区',
+          110105: '朝阳区',
+          110106: '丰台区',
+          120101: '和平区',
+          120102: '河东区',
+          120103: '河西区',
+          120104: '南开区',
+          120105: '河北区',
           // ....
-        }
-      }
+        },
+      },
     };
   },
   methods: {
@@ -84,18 +84,18 @@ export default {
     },
     confirm(val) {
       var address = val[0].name + val[1].name + val[2].name; //省市区的地址拼接
-      var allInputs = document.getElementsByTagName("input"); //所有input
+      var allInputs = document.getElementsByTagName('input'); //所有input
       this.bigAddress = address;
       this.show = false;
     },
     onClickLeft() {
       this.$router.push({
-        name: "addressList"
+        name: 'addressList',
       });
     },
     // 右上角点击保存跳地址列表页
     onClickRight(val) {
-      var allInputs = document.getElementsByTagName("input"); //所有input
+      var allInputs = document.getElementsByTagName('input'); //所有input
       // 输出输入框的值
       console.log(this.name);
       console.log(this.tel);
@@ -103,8 +103,8 @@ export default {
       console.log(this.smallAddress);
       console.log(this.radio);
       console.log(this.checked);
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
