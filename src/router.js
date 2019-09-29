@@ -42,7 +42,7 @@ import AccMang from './views/home/me/Zhagnhu.vue';
 // eslint-disable-next-line import/no-unresolved
 import Settings from './views/home/me/Settings.vue';
 import Message from './views/home/me/Message.vue';
-
+import Card from './views/home/me/Card.vue';
 
 Vue.use(Router);
 
@@ -226,6 +226,11 @@ export default new Router({
             name: 'message',
             path: '/message',
             component: Message,
+        },
+        {
+            path: '/card',
+            name: 'card',
+            component: Card,
         },
     ],
 });
