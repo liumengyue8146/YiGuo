@@ -1,7 +1,6 @@
 <template>
   <div>
-    用户登录之前
-    测试一下
+    <p>用户登录之前</p>
   </div>
 </template>
 
