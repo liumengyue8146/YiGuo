@@ -14,7 +14,7 @@ import Zuomeishi from './views/home/eat/zuomeishi.vue';
 import Zhangzhishi from './views/home/eat/zhangzhishi.vue';
 import Shenghuojia from './views/home/eat/shenghuojia.vue';
 
-// liu
+// liu_haha
 import PayforOrder from './views/payforOrder.vue'; // 订单支付
 import NewAddress from './views/newAddress.vue'; // 新增地址
 import AddressList from './views/addressList.vue'; //  地址列表
