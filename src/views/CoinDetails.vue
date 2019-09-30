@@ -2,13 +2,7 @@
   <div class="app">
     <!-- top -->
     <van-sticky>
-      <van-nav-bar
-        title="悠币明细"
-        left-arrow
-        left-text="《返回"
-        @click-left="onClickLeft"
-        @click-right="onClickRight"
-      ></van-nav-bar>
+      <van-nav-bar title="悠币明细" left-arrow @click-left="onClickLeft" @click-right="onClickRight"></van-nav-bar>
     </van-sticky>
     <!-- middle -->
     <div class="top1">
@@ -43,11 +37,33 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  methods: {
+    onClickLeft() {
+      this.$router.push({
+        name: "me"
+      });
+    }
+  }
+};
+</script>
 <style scoped>
 .app {
   height: 100%;
   width: 100%;
   background: #f4f4f4;
+}
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
 }
 .van-nav-bar__title {
   font-weight: 900;

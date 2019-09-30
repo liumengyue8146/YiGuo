@@ -43,10 +43,24 @@ export default {
     onEdit(item, index) {
       Toast("编辑地址:" + index);
     },
-    onClickLeft() {},
+    onClickLeft() {
+      this.$router.push({
+        name: "me"
+      });
+    },
     onClickRight() {}
   }
 };
 </script>
 <style scoped>
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
+}
 </style>

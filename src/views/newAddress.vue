@@ -9,13 +9,10 @@
         @click-right="onClickRight"
         left-arrow
       />
-      <!--  @click-left="onClickLeft"
-      @click-right="onClickRight"-->
     </van-sticky>
     <!-- middle -->
     <div class="main">
       <van-cell-group>
-        <br />
         <van-field v-model="name" class="filed" value=" " label="收货人姓名：" />
         <van-field v-model="tel" label="手机号码：" />
         <van-field v-model="bigAddress" label="所在地区：" is-link @click="showPopup" />
@@ -28,15 +25,11 @@
           </van-radio-group>
         </div>
       </van-cell-group>
-
-      <van-popup position="bottom" :style="{ height: '70%' }" round v-model="show">
-        <van-area :area-list="areaList" value="110102" @confirm="confirm" />
-      </van-popup>
-    </div>
-    <!-- footer -->
-    <div class="autoAddress">
-      <span>设为默认地址：</span>
-      <van-switch v-model="checked" size="18px" active-color="#07c160" inactive-color="#ee0a24" />
+      <!-- footer -->
+      <div class="autoAddress">
+        <span>设为默认地址：</span>
+        <van-switch v-model="checked" size="18px" active-color="#07c160" inactive-color="#ee0a24" />
+      </div>
     </div>
   </div>
 </template>
@@ -113,11 +106,24 @@ export default {
   width: 100%;
   background: #f4f4f4;
 }
+
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
+}
 .autoAddress {
   height: 40px;
   line-height: 40px;
-  background: #fff;
   display: flex;
+  z-index: 100;
+  background: #fff;
+  border-top: 15px solid #f4f4f4;
 }
 .van-field {
   margin: 2px 0;
@@ -126,7 +132,7 @@ export default {
   background: #f4f4f4;
 }
 .autoAddress span {
-  margin-left: 25px;
+  margin-left: 15px;
   font-size: 15px;
   font-family: PingFang SC;
   font-weight: 800;
@@ -145,7 +151,7 @@ export default {
 }
 .address span {
   display: block;
-  margin: 5px 25px;
+  margin: 5px 15px;
 }
 .address .van-radio {
   margin: 0 20px;

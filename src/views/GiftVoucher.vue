@@ -3,7 +3,7 @@
     <!-- GiftVoucher提货券 -->
     <!-- top -->
     <van-sticky>
-      <van-nav-bar title="易果生鲜礼品兑换" left-arrow @click-left="onClickLeft"></van-nav-bar>
+      <van-nav-bar style="padding:10px 0;" title="易果生鲜礼品兑换" left-arrow @click-left="onClickLeft"></van-nav-bar>
     </van-sticky>
     <!-- middle -->
     <van-cell-group>
@@ -28,7 +28,11 @@
 <script>
 export default {
   methods: {
-    onClickLeft() {}
+    onClickLeft() {
+      this.$router.push({
+        name: "me"
+      });
+    }
   }
 };
 </script>
@@ -37,6 +41,16 @@ export default {
   position: relative;
 }
 
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
+}
 .van-cell__value .van-cell__value--alone {
   padding-left: 15px;
 }
@@ -115,5 +129,8 @@ h5 span {
   height: 22px;
   font-size: 16px;
   color: rgba(51, 188, 140, 1);
+}
+.van-sticky {
+  padding: 10px 0;
 }
 </style>

@@ -172,4 +172,7 @@ export default {};
   width: 100%;
   font-size: 14px;
 }
+.jifen {
+  padding: 2px 0;
+}
 </style>
