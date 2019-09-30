@@ -3,7 +3,7 @@
   <div class="app">
     <!-- top -->
     <van-sticky>
-      <van-nav-bar title="订单结算" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+      <van-nav-bar title="地址列表" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
     </van-sticky>
     <!-- middle -->
     <van-address-list v-model="chosenAddressId" :list="list" @add="onAdd" @edit="onEdit" />
@@ -48,3 +48,5 @@ export default {
   }
 };
 </script>
+<style scoped>
+</style>

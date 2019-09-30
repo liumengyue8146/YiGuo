@@ -134,4 +134,7 @@
   line-height: 80px;
   font-size: 16px;
 }
+.left {
+  font-size: 16px;
+}
 </style>
