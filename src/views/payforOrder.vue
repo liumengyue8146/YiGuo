@@ -7,10 +7,12 @@
     </van-sticky>
     <!-- middle -->
     <div id="middle">
-      <div class="address">
-        <van-icon class="icon1" name="location-o" />
-        <van-cell class="cell1" title="添加收获地址" is-link />
-      </div>
+      <router-link :to="{name:'newAddress'}">
+        <div class="address">
+          <van-icon class="icon1" name="location-o" />
+          <van-cell class="cell1" title="添加收获地址" is-link />
+        </div>
+      </router-link>
 
       <van-cell title="共4件商品" is-link value="内容" />
       <div class="goods">
@@ -32,15 +34,17 @@
       </div>
       <!-- 优惠券 -->
       <div class="middle">
-        <van-cell value=" " is-link>
-          <template slot="title">
-            <span class="custom-title">
-              优惠券
-              <i class="numYouhui">5</i>
-              <!-- <van-goods-action-icon icon="chat-o" info="5" /> -->
-            </span>
-          </template>
-        </van-cell>
+        <router-link :to="{name:'helpCenter'}">
+          <van-cell value=" " is-link>
+            <template slot="title">
+              <span class="custom-title">
+                优惠券
+                <i class="numYouhui">5</i>
+                <!-- <van-goods-action-icon icon="chat-o" info="5" /> -->
+              </span>
+            </template>
+          </van-cell>
+        </router-link>
       </div>
       <!-- 合计 -->
       <div class="middle">
@@ -168,5 +172,15 @@
 .goods img {
   height: 50px;
   width: 50px;
+}
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
 }
 </style>

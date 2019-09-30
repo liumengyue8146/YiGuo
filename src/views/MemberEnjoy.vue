@@ -66,7 +66,9 @@ export default {
   },
   methods: {
     onClickLeft() {
-      console.log(111);
+      this.$router.push({
+        name: "me"
+      });
     }
   }
 };
@@ -178,9 +180,9 @@ img {
   align-items: center;
 }
 .m1-center .ball2 span {
-  font-size: 18px;
-  height: 50px;
-  width: 50px;
+  font-size: 16px;
+  height: 45px;
+  width: 45px;
   text-align: center;
 }
 .m1-center .ball3 {
@@ -196,7 +198,7 @@ img {
 }
 .m1-center .ball3 span {
   font-size: 12px;
-  height: 30px;
+  height: 35px;
   width: 30px;
   text-align: center;
 }
@@ -207,11 +209,23 @@ img {
   background: #fff9eb;
   color: #8b8b89;
   line-height: 40px;
+  font-size: 12px;
+}
+.m1-t {
+  font-size: 12px;
 }
 .van-nav-bar {
   padding: 10px 0;
 }
-.van-nav-bar__left {
-  top: -3px;
+
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
 }
 </style>

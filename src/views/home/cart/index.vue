@@ -99,6 +99,17 @@ export default {
   display: flex;
   flex-direction: column;
 }
+
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
+}
 .card1 {
   display: flex;
   justify-content: space-around;

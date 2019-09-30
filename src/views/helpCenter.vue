@@ -21,7 +21,11 @@ export default {
     return {};
   },
   methods: {
-    onClickLeft() {}
+    onClickLeft() {
+      this.$router.push({
+        name: "me"
+      });
+    }
   }
 };
 </script>
@@ -55,5 +59,16 @@ export default {
   color: #000;
   font-weight: 1000;
   font-size: 18px;
+}
+
+/* 解决顶部 */
+.van-sticky .van-nav-bar {
+  padding: 10px 0;
+}
+.van-sticky .van-icon {
+  margin: 0;
+  background: #fff;
+  margin-top: -4px;
+  color: #000;
 }
 </style>
