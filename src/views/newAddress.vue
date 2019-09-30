@@ -28,7 +28,7 @@
           </van-radio-group>
         </div>
       </van-cell-group>
-      <!-- all地区 -->
+
       <van-popup position="bottom" :style="{ height: '70%' }" round v-model="show">
         <van-area :area-list="areaList" value="110102" @confirm="confirm" />
       </van-popup>
@@ -156,7 +156,7 @@ export default {
 .main {
   width: 100%;
   background: #f4f4f4;
-  padding: 10px 0;
+  /* padding: 10px 0; */
   padding-top: 0;
 }
 </style>

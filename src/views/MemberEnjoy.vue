@@ -24,7 +24,7 @@
         </div>
       </div>
     </div>
-    <div class="m2">每个礼包仅能放入购物车一次，且收获地址和当前地址一致</div>
+    <div class="m2">每个礼包仅能放购物车一次，且收获地址和当前地址一致</div>
     <!-- bottom -->
     <div class="bottom">
       <h3>
@@ -207,5 +207,11 @@ img {
   background: #fff9eb;
   color: #8b8b89;
   line-height: 40px;
+}
+.van-nav-bar {
+  padding: 10px 0;
+}
+.van-nav-bar__left {
+  top: -3px;
 }
 </style>

@@ -5,14 +5,16 @@
     <!-- 1 -->
     <div class="top">
       <div class="top1">
-        <van-icon name="point-gift-o" />
+        <router-link :to="{name:'settings'}">
+          <van-icon name="records" />
+        </router-link>
         <van-icon name="comment-o" dot />
       </div>
       <div class="top2">
         <div class="left">
           <img src="@/assets/01.png" />
         </div>
-        <div class="right">
+        <div class="right1">
           <h2>欧克yoyo</h2>
           <h3>普卡</h3>
           <p>当前累积商品实付金额0.00</p>
@@ -35,8 +37,10 @@
         <dd>卡包余额</dd>
       </dl>
       <dl>
-        <dt>200</dt>
-        <dd>悠币</dd>
+        <router-link :to="{name:'coinDetails'}">
+          <dt>200</dt>
+          <dd>悠币</dd>
+        </router-link>
       </dl>
     </div>
     <!-- 状态 -->
@@ -63,7 +67,7 @@
         <dt>
           <van-icon name="newspaper-o" />
         </dt>
-        <dd>在线收换货</dd>
+        <dd>在线退换货</dd>
       </dl>
       <dl>
         <dt>
@@ -75,10 +79,12 @@
     <!-- 下面 -->
     <div class="bottom">
       <dl to="/cart" info="99+">
-        <dt>
-          <img src="@/assets/01.png" />
-        </dt>
-        <dd>优惠券</dd>
+        <router-link :to="{name:'message'}">
+          <dt>
+            <img src="@/assets/01.png" />
+          </dt>
+          <dd>优惠券</dd>
+        </router-link>
       </dl>
       <dl to="/cart" info="99+">
         <dt>
@@ -87,10 +93,12 @@
         <dd>储值卡绑定</dd>
       </dl>
       <dl to="/cart" info="99+">
-        <dt>
-          <img src="@/assets/01.png" />
-        </dt>
-        <dd>提货券</dd>
+        <router-link :to="{name:'giftVoucher'}">
+          <dt>
+            <img src="@/assets/01.png" />
+          </dt>
+          <dd>提货券</dd>
+        </router-link>
       </dl>
       <dl to="/cart" info="99+">
         <router-link :to="{name:'addressList'}">
@@ -160,4 +168,8 @@ import me from "@/css/liu/me.css";
 export default {};
 </script>
 <style scoped>
+.app {
+  width: 100%;
+  font-size: 14px;
+}
 </style>

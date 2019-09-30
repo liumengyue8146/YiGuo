@@ -2,11 +2,14 @@
   <div class="app">
     <!-- 顶部 -->
     <van-sticky>
-      <van-nav-bar title="购物车" left-text="返回" right-text="编辑" left-arrow />
+      <van-nav-bar
+        title="购物车"
+        left-text="返回"
+        right-text="编辑"
+        left-arrow
+        @click-right="onClickRight"
+      />
     </van-sticky>
-
-    <!--  @click-left="onClickLeft"
-    @click-right="onClickRight"-->
 
     <div class="card">
       <div class="card1">
@@ -41,70 +44,11 @@
           </div>
         </van-card>
       </div>
-      <div class="card1">
-        <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
-        <van-card
-          class="right"
-          align="left"
-          price="2.00"
-          title="商品标题描述信息描述信息描述信息描述信息描述信息"
-          thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-        >
-          <div slot="bottom" class="card1Bottom">
-            <span>￥2.00</span>
-            <van-stepper v-model="value" class="step" />
-          </div>
-        </van-card>
-      </div>
-      <div class="card1">
-        <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
-        <van-card
-          class="right"
-          align="left"
-          price="2.00"
-          title="商品标题描述信息描述信息描述信息描述信息描述信息"
-          thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-        >
-          <div slot="bottom" class="card1Bottom">
-            <span>￥2.00</span>
-            <van-stepper v-model="value" class="step" />
-          </div>
-        </van-card>
-      </div>
-      <div class="card1">
-        <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
-        <van-card
-          class="right"
-          align="left"
-          price="2.00"
-          title="商品标题描述信息描述信息描述信息描述信息描述信息"
-          thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-        >
-          <div slot="bottom" class="card1Bottom">
-            <span>￥2.00</span>
-            <van-stepper v-model="value" class="step" />
-          </div>
-        </van-card>
-      </div>
-      <div class="card1">
-        <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
-        <van-card
-          class="right"
-          align="left"
-          price="2.00"
-          title="商品标题描述信息描述信息描述信息描述信息描述信息"
-          thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-        >
-          <div slot="bottom" class="card1Bottom">
-            <span>￥2.00</span>
-            <van-stepper v-model="value" class="step" />
-          </div>
-        </van-card>
-      </div>
+
       <!-- end -->
     </div>
-    <!-- 结算部分 -->
-    <div class="allPrice">
+    <!-- 结算部分1 -->
+    <div class="allPrice" v-if="this.state">
       <van-checkbox class="van-checkbox" v-model="checked" checked-color="#07c160">全选</van-checkbox>
       <div class="price">
         <i>
@@ -116,7 +60,12 @@
       </div>
       <a>去结算</a>
     </div>
-    <hr />
+    <!-- 结算部分2  -->
+    <div class="allPrice2" v-if="!this.state">
+      <van-checkbox class="van-checkbox" v-model="checked" checked-color="#07c160">全选</van-checkbox>
+      <span>移入收藏夹</span>
+      <a>删除</a>
+    </div>
   </div>
 </template>
 <script>
@@ -124,12 +73,17 @@ export default {
   data() {
     return {
       value: 1,
-      checked: true
+      checked: true,
+      state: true
     };
   },
   methods: {
     toggle(index) {
       this.$refs.checkboxes[index].toggle();
+    },
+    // 右侧编辑
+    onClickRight() {
+      this.state = !this.state;
     }
   },
   mounted() {
@@ -140,6 +94,8 @@ export default {
 
 <style scoped>
 .app {
+  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }
@@ -148,7 +104,6 @@ export default {
   justify-content: space-around;
 }
 .allPrice {
-  position: relative;
   position: fixed;
   left: 0;
   bottom: 50px;
@@ -212,15 +167,50 @@ export default {
   opacity: 1;
 }
 .allPrice .van-checkbox {
-  margin-left: 5px;
+  margin-left: 15px;
   margin-top: 15px;
   float: left;
   width: 70px;
 }
-.cart1 {
-  vertical-align: middle;
-  height: 100px;
+.allPrice2 {
+  position: fixed;
+  left: 0;
+  bottom: 50px;
+  height: 50px;
+  width: 100%;
+  background: #fff;
+  border-bottom: 2px solid #eee;
 }
+.allPrice2 span {
+  font-size: 14px;
+  height: 30px;
+  width: 100px;
+  border: 1px solid red;
+  border-radius: 20px;
+  position: absolute;
+  top: 10px;
+  right: 100px;
+  text-align: center;
+  line-height: 30px;
+}
+.allPrice2 a {
+  font-size: 14px;
+  height: 30px;
+  width: 50px;
+  border: 1px solid red;
+  border-radius: 20px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  text-align: center;
+  line-height: 30px;
+}
+.allPrice2 .van-checkbox {
+  margin-left: 15px;
+  margin-top: 15px;
+  float: left;
+}
+
 .card1 .left {
   width: 20px;
   float: left;
@@ -241,5 +231,13 @@ export default {
 }
 .app {
   background: #f4f4f4;
+}
+.van-checkbox__label {
+  font-size: 14px;
+  color: red;
+}
+.van-checkbox {
+  font-size: 14px;
+  color: red;
 }
 </style>
