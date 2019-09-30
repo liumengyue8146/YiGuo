@@ -12,9 +12,8 @@
       </van-grid>
     </van-popup>
     <section>
-
-      <van-tabbar route :fixed="true">
-        <van-tabbar-item :to="{name:'zuomeishi'}">
+      <van-tabbar route :fixed="true" v-model="active">
+        <van-tabbar-item :to="{name:'eat'}">
           <span>做美食</span>
           <img slot="icon" src="./../../../../public/images/eat/meishi.png" />
         </van-tabbar-item>
@@ -32,16 +31,31 @@
       </van-tabbar>
       <div class="line"></div>
       <router-view />
-
+      <div class="product">
+        <van-grid :column-num="1">
+          <van-grid-item v-for="value in 5" :key="value">
+            <div class="biaoti">做美食</div>
+            <div class="start">
+              <van-icon name="browsing-history-o" />234322
+            </div>
+            <img src="./../../../../public/images/eat/pro1.png" class="proimg" />
+            <h4>端午送礼|带上五芳斋粽子，和家人一起分享幸福的滋味！</h4>
+            <p class="time">
+              <img src="./../../../../public/images/eat/title.png" alt />
+              <span>易果君</span>
+              <span>2019年05月24日</span>
+            </p>
+          </van-grid-item>
+        </van-grid>
+      </div>
     </section>
   </div>
 </template>
 <script>
-import eat from "./../../../css/eat.css";
+//import eat from "./../../../css/eat.css";
 export default {
   created() {
-
-   // this.$router.push({ name: "zuomeishi" });
+    // this.$router.push({ name: "zuomeishi" });
   },
   methods: {
     onClickRight() {
@@ -61,7 +75,6 @@ export default {
 };
 </script>
 <style scoped>
-
 @import "./../../../css/eat.css";
 </style>
 
