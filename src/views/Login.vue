@@ -6,7 +6,7 @@
     <section>
       <div class="user">
         <van-tabs :border="false" title-active-color="green" line-height="4px">
-          <van-tab title="手机快捷登陆">
+          <van-tab id="sjdl" title="手机快捷登陆">
             <phone></phone>
           </van-tab>
           <van-tab title="账号密码登陆">
@@ -24,6 +24,11 @@ export default {
   components: {
     Phone,
     Account,
+  },
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
@@ -68,5 +73,13 @@ section {
 }
 .van-tab {
   font-size: 16px;
+}
+#sjdl .van-ellipsis {
+  font-size: 16px;
+}
+</style>
+<style>
+.user .van-field__control {
+  height: 40px;
 }
 </style>
