@@ -5,8 +5,14 @@
         <van-dropdown-item v-model="value" :options="option" />
       </van-dropdown-menu>
 
-      <van-search placeholder="请输入商品样式" v-model="value1" shape="round" background="#32d683" />
-      <van-icon name="scan" color="white" size="18px" style="margin-left:15px" />
+      <van-search
+        placeholder="请输入商品样式"
+        v-model="value1"
+        shape="round"
+        background="#32d683"
+        @search="onSearch"
+      />
+      <van-icon name="scan" color="white" size="22px" style="margin-left:15px" />
     </div>
     <section style="overflow:auto;padding-bottom:80px">
       <div class="swipe">
@@ -116,12 +122,15 @@ export default {
   methods: {
     onConfirm() {
       this.$refs.item.toggle();
+    },
+    onSearch() {
+      console.log("aaa");
     }
   }
 };
 </script>
 
-<style  scoped>
+<style>
 .shouye {
   width: 100%;
   height: 100%;
@@ -131,7 +140,7 @@ export default {
   flex-direction: column;
   position: relative;
 }
-.header {
+.shouye .header {
   height: 42px;
   width: 100%;
   display: flex;
@@ -141,10 +150,10 @@ export default {
   top: 0;
   left: 0;
 }
-.header .van-hairline--top-bottom{
-  height:100%;
+.shouye .header .van-hairline--top-bottom {
+  height: 100%;
 }
-section {
+.shouye section {
   overflow: auto;
   width: 100%;
   height: 550px;
@@ -152,78 +161,80 @@ section {
   top: 42px;
   left: 0;
 }
-.van-dropdown-menu {
+.shouye .van-dropdown-menu {
   background: #32d683;
   padding-right: 15px;
   padding-left: 5px;
   /* height: 19px; */
 }
-.header .van-dropdown-menu__title .van-ellipsis {
+.shouye .header .van-dropdown-menu__title .van-ellipsis {
   color: #fff;
 }
-.header .van-dropdown-menu__title {
-  color: #fff;
-}
-.header .van-ellipsis {
-  color: #fff;
-}
-.van-dropdown-menu__title::after {
-  border: 10px;
-  border-color: transparent transparent #fff #ffff;
+.shouye .van-dropdown-menu__title::after {
+  border: 5px solid;
+  border-color: transparent transparent #fff #fff;
+  top: 40%;
+  right: -8px;
 }
 .shouye .van-search {
   width: 250px;
-}
-
-.van-search__content {
-  height: 19px;
-}
-.van-cell--borderless {
+  margin-left: 5px;
   padding: 0;
 }
-.van-search__content .van-cell {
-  height: 19px;
+
+.shouye .van-search__content {
+  height: 24px;
+}
+.shouye .van-cell--borderless {
+  padding: 0;
+}
+.shouye .van-search__content .van-cell {
+  height: 24px;
 }
 
-i.van-icon.van-icon-search {
-  height: 19px;
-  line-height: 19px;
+.shouye i.van-icon.van-icon-search {
+  height: 24px;
+  line-height: 24px;
 }
 
-input.van-field__control {
-  height: 19px;
-  line-height: 19px;
+.shouye input.van-field__control {
+  height: 24px;
+  line-height: 24px;
 }
 
 /* .van-dropdown-menu__title--down {
   color: #fff !important;
 } */
-.van-search {
-  margin: 0;
-  padding: 0;
-}
-section {
+
+.shouye section {
+  margin-top: 0px;
   font-size: 12px;
 }
-.swipe,
-.van-swipe {
+.shouye .swipe,
+.shouye .van-swipe {
   height: 150px;
 }
 
-nav {
+.shouye nav {
   display: flex;
 }
-figure,
-figcaption {
+.shouye figure {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.shouye figure,
+.shouye figcaption {
   padding: 0;
   margin: 0;
   font-size: 12px;
   color: #666;
 }
-figure img {
+.shouye figure img {
   width: 100%;
 }
-.logo {
+.shouye .logo {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -233,7 +244,7 @@ figure img {
   color: #333;
   font-size: 12px;
 }
-.logo h3 {
+.shouye .logo h3 {
   width: 57px;
   height: 13px;
   font-size: 12px;
@@ -243,73 +254,73 @@ figure img {
     top right;
   line-height: 13px;
 }
-.logo span {
+.shouye .logo span {
   height: 13px;
 }
-.logo .logor {
+.shouye .logo .logor {
   color: #26b97e;
 }
-.logo p {
+.shouye .logo p {
   height: 13px;
   padding-left: 20px;
   line-height: 13px;
   text-align: left;
 }
-.logo p a {
+.shouye .logo p a {
   padding-left: 20px;
   color: #acacac;
 }
-.logo p a span {
+.shouye .logo p a span {
   padding-left: 10px;
 }
-.countdown {
+.shouye .countdown {
   height: 39px;
 }
-.countdown h3 {
+.shouye .countdown h3 {
   color: #333333;
   height: 22px;
   line-height: 22px;
   margin: 0;
 }
-.countdown .count {
+.shouye .countdown .count {
   display: flex;
   height: 17px;
   justify-content: center;
 }
-.countdown .count h4 {
+.shouye .countdown .count h4 {
   margin: 0;
   height: 17px;
 }
-.countdown .count h4 span {
+.shouye .countdown .count h4 span {
   color: #5bc6a0;
 }
-.countdown .count h4 i {
+.shouye .countdown .count h4 i {
   color: #999999;
   font-style: normal;
 }
-.van-count-down {
+.shouye .van-count-down {
   margin: 0 14px;
 }
-.countdown .count span {
+.shouye .countdown .count span {
   color: #9f9f9f;
 }
-.product {
+.shouye .product {
   padding-top: 10px;
 }
-.productLine {
+.shouye .productLine {
   display: flex;
 }
-.productLine figure {
+.shouye .productLine figure {
   box-sizing: border-box;
-  display:flex;
-  flex-direction:column;
-justify-content:center;
-align-items:center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.productLine figure:nth-of-type(2) {
+.shouye .productLine figure:nth-of-type(2) {
   margin: 0 15px;
 }
-.item {
+.shouye .item {
   display: inline-block;
   width: 22px;
   margin-right: 5px;
