@@ -9,17 +9,18 @@
       <div class="displaySwipe">
         <van-swipe indicator-color="white">
           <van-swipe-item v-for=" i in 3" :key="i">
-            <img src="../../../assets/liulian.jpg" alt />
+            <!-- <img src="../../../assets/liulian.jpg" alt /> -->
+            <img :src="product.coverImg" alt="图片加载失败" />
           </van-swipe-item>
         </van-swipe>
       </div>
-      <h1 class="detailName">SunMoon泰国金枕头冷冻榴莲果肉300g</h1>
+      <h1 class="detailName">{{this.product.name}}</h1>
       <div class="detailDesc">
         <span>第二份19.9元</span>
-        <p>就像现剥的榴莲肉一样绵糯香甜</p>
+        <p>{{this.product.name}}</p>
       </div>
       <div class="detailPrice">
-        <span>￥399</span>
+        <span>￥{{this.product.price}}</span>
         <i>产地：中国</i>
       </div>
       <div class="detailSales">
@@ -37,7 +38,7 @@
       </div>
       <div class="detailQua">
         <p>数量</p>
-        <van-stepper v-model="value" />
+        <van-stepper v-model="product.quantity" />
       </div>
     </div>
     <div class="addCart">
@@ -50,35 +51,58 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex';
+import { getToken, setToken, removeToken } from '@/utils/auth';
 export default {
+  created() {
+    this.product = this.$route.params.detail;
+    console.log(this.$route.params.detail);
+  },
   data() {
     return {
-      value: 1
+      value: 1,
+      product: {
+        coverImg: '',
+        name: '',
+        price: '',
+        descriptions: '',
+        _id: '',
+        quantity: 1,
+      },
     };
   },
   methods: {
+    ...mapActions('product', {
+      addcart: 'addcart',
+    }),
+
     onClickLeft() {
-      alert("返回");
+      alert('返回');
     },
     onClickRight() {
-      alert("按钮");
+      alert('按钮');
     },
     backTo() {
       this.$router.go(-1); //路由后退
     },
     goCartLeft() {
       this.$router.push({
-        name: "cart"
+        name: 'cart',
       });
     },
     goCartRight() {
-      this.$router.push({
-        name: "cart"
+      this.addcart({
+        productid: this.product._id,
+        token: getToken(),
+        quantity: this.product.quantity,
       });
-    }
-  }
+      // this.$router.push({
+      //   name: 'cart',
+      // });
+    },
+  },
 };
 </script>
 <style scoped>
-@import "../../../css/detail.scss";
+@import '../../../css/detail.scss';
 </style>

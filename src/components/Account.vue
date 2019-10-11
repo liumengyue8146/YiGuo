@@ -2,16 +2,25 @@
   <div class="phone">
     <div class="nub">
       <van-cell-group>
-        <van-field v-model="value" placeholder="手机号/账号/邮箱" />
+        <van-field v-model="phone" placeholder="手机号/账号/邮箱" />
       </van-cell-group>
       <van-cell-group>
-        <van-field v-model="sms" center clearable placeholder="请输入密码"></van-field>
+        <van-field v-model="password" center clearable placeholder="请输入密码" type="password"></van-field>
       </van-cell-group>
       <span class="forget">忘记密码？</span>
       <br />
       <br />
       <div class="loginButton">
-        <van-button type="primary" size="large">登陆</van-button>
+        <!-- <van-button
+          type="primary"
+          size="large"
+          @click="login({str:'phone='+phone+'&password='+password, $router: $router})"
+        >登陆</van-button>-->
+        <van-button
+          type="primary"
+          size="large"
+          @click="login({'tel':phone,'password':password,$router: $router})"
+        >登录</van-button>
       </div>
     </div>
     <div class="elseLogin">
@@ -36,6 +45,25 @@
     </div>
   </div>
 </template>
+
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex';
+export default {
+  data() {
+    return {
+      phone: '',
+      password: '',
+    };
+  },
+
+  methods: {
+    ...mapActions('user', {
+      login: 'login',
+    }),
+  },
+};
+</script>
+
 <style  scoped>
 .nub {
   margin: 60px 46px 0 46px;

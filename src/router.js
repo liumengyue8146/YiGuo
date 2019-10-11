@@ -35,222 +35,220 @@ import Message from './views/home/me/Message.vue';
 import Card from './views/home/me/Card.vue'; //我的卡包
 import MyOrder from './views/home/me/MyOrder.vue'; //我的订单
 
-
 Vue.use(Router);
 
 export default new Router({
-    routes: [
-        // 首页路由
+  routes: [
+    // 首页路由
+    {
+      path: '/',
+      name: 'homesmall',
+      component: Homesmall,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    {
+      path: '/category',
+      name: 'category',
+      component: Category,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    {
+      path: '/eat',
+      name: 'eat',
+      component: Eat,
+      meta: {
+        keepAlive: true,
+      },
+      children: [
         {
-            path: '/',
-            name: 'homesmall',
-            component: Homesmall,
-            meta: {
-                keepAlive: true,
-            },
+          name: 'zuomeishi',
+          path: '/zuomeishi',
+          component: Zuomeishi,
+          meta: {
+            keepAlive: true,
+          },
         },
         {
-            path: '/category',
-            name: 'category',
-            component: Category,
-            meta: {
-                keepAlive: true,
-            },
+          name: 'zhangzhishi',
+          path: '/zhangzhishi',
+          component: Zhangzhishi,
         },
         {
-            path: '/eat',
-            name: 'eat',
-            component: Eat,
-            meta: {
-                keepAlive: true,
-            },
-            children: [{
-                    name: 'zuomeishi',
-                    path: '/zuomeishi',
-                    component: Zuomeishi,
-                    meta: {
-                        keepAlive: true,
-                    },
-                },
-                {
-                    name: 'zhangzhishi',
-                    path: '/zhangzhishi',
-                    component: Zhangzhishi,
+          name: 'shenghuojia',
+          path: '/shenghuojia',
+          component: Shenghuojia,
+        },
+      ],
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: Cart,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    {
+      path: '/me',
+      name: 'me',
+      component: Me,
+      meta: {
+        keepAlive: true,
+      },
+    },
+    // 帮助中心
+    {
+      path: '/helpCenter',
+      name: 'helpCenter',
+      component: HelpCenter,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 提货券
+    {
+      path: '/giftVoucher',
+      name: 'giftVoucher',
+      component: GiftVoucher,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 积分换生鲜
+    {
+      path: '/integralForFresh',
+      name: 'integralForFresh',
+      component: IntegralForFresh,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 会员尊享
+    {
+      path: '/memberEnjoy',
+      name: 'memberEnjoy',
+      component: MemberEnjoy,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 悠币明细
+    {
+      path: '/coinDetails',
+      name: 'coinDetails',
+      component: CoinDetails,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 新品荟萃liu
+    {
+      path: '/theNewGood',
+      name: 'theNewGood',
+      component: TheNewGood,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 收获地址列表addressList
+    {
+      path: '/addressList',
+      name: 'addressList',
+      component: AddressList,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    // 新增收获地址newAddress
+    {
+      path: '/newAddress',
+      name: 'newAddress',
+      component: NewAddress,
+      meta: {
+        keepAlive: false,
+      },
+    },
 
-                },
-                {
-                    name: 'shenghuojia',
-                    path: '/shenghuojia',
-                    component: Shenghuojia,
+    // 订单结算payforOrder
+    {
+      path: '/payforOrder',
+      name: 'payforOrder',
+      component: PayforOrder,
+      meta: {
+        keepAlive: false,
+      },
+    },
 
-                },
-            ],
-        },
-        {
-            path: '/cart',
-            name: 'cart',
-            component: Cart,
-            meta: {
-                keepAlive: true,
-            },
-        },
-        {
-            path: '/me',
-            name: 'me',
-            component: Me,
-            meta: {
-                keepAlive: true,
-            },
-        },
-        // 帮助中心
-        {
-            path: '/helpCenter',
-            name: 'helpCenter',
-            component: HelpCenter,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 提货券
-        {
-            path: '/giftVoucher',
-            name: 'giftVoucher',
-            component: GiftVoucher,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 积分换生鲜
-        {
-            path: '/integralForFresh',
-            name: 'integralForFresh',
-            component: IntegralForFresh,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 会员尊享
-        {
-            path: '/memberEnjoy',
-            name: 'memberEnjoy',
-            component: MemberEnjoy,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 悠币明细
-        {
-            path: '/coinDetails',
-            name: 'coinDetails',
-            component: CoinDetails,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 新品荟萃liu
-        {
-            path: '/theNewGood',
-            name: 'theNewGood',
-            component: TheNewGood,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 收获地址列表addressList
-        {
-            path: '/addressList',
-            name: 'addressList',
-            component: AddressList,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        // 新增收获地址newAddress
-        {
-            path: '/newAddress',
-            name: 'newAddress',
-            component: NewAddress,
-            meta: {
-                keepAlive: false,
-            },
-        },
+    {
+      path: '/login',
+      name: 'login',
+      component: Login,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    {
+      path: '/sinup',
+      name: 'sinup',
+      component: Sinup,
+      meta: {
+        keepAlive: false,
+      },
+    },
 
-        // 订单结算payforOrder
-        {
-            path: '/payforOrder',
-            name: 'payforOrder',
-            component: PayforOrder,
-            meta: {
-                keepAlive: false,
-            },
-        },
-
-        {
-            path: '/login',
-            name: 'login',
-            component: Login,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        {
-            path: '/sinup',
-            name: 'sinup',
-            component: Sinup,
-            meta: {
-                keepAlive: false,
-            },
-        },
-
-        {
-            name: 'detail',
-            path: '/detail',
-            component: Detail,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        {
-            name: 'accman',
-            path: '/accman',
-            component: AccMang,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        {
-            name: 'settings',
-            path: '/settings',
-            component: Settings,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        {
-            name: 'message',
-            path: '/message',
-            component: Message,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        //我的卡包
-        {
-            path: '/card',
-            name: 'card',
-            component: Card,
-            meta: {
-                keepAlive: false,
-            },
-        },
-        //我的订单
-        {
-            path: '/myorder',
-            name: 'myorder',
-            component: MyOrder,
-            meta: {
-                keepAlive: false,
-            },
-        },
-    ],
+    {
+      name: 'detail',
+      path: '/detail',
+      component: Detail,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    {
+      name: 'accman',
+      path: '/accman',
+      component: AccMang,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    {
+      name: 'settings',
+      path: '/settings',
+      component: Settings,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    {
+      name: 'message',
+      path: '/message',
+      component: Message,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    //我的卡包
+    {
+      path: '/card',
+      name: 'card',
+      component: Card,
+      meta: {
+        keepAlive: false,
+      },
+    },
+    //我的订单
+    {
+      path: '/myorder',
+      name: 'myorder',
+      component: MyOrder,
+      meta: {
+        keepAlive: false,
+      },
+    },
+  ],
 });

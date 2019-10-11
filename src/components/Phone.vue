@@ -1,19 +1,48 @@
 <template>
   <div class="phone">
+    <van-popup
+      v-model="show"
+      closeable
+      close-icon="success"
+      close-icon-position="top-right"
+      @closed="send"
+      :style="{ height: '30%',width:'100%' }"
+    >
+      <van-cell-group>
+        <van-field
+          v-model="mima"
+          type="password"
+          required
+          clearable
+          label="密码"
+          right-icon="question-o"
+          placeholder="请输入密码"
+          @click-right-icon="$toast('question')"
+        />
+
+        <van-field v-model="mima1" type="password" label="确认密码" placeholder="请确认密码" required />
+      </van-cell-group>
+
+      <!-- 密码：
+      <input type="text" placeholder="请设置登录密码" v-model="mima" />
+      <br />确认密码：
+      <input type="text" placeholder="再次确认密码" v-model="mima1" />-->
+    </van-popup>
     <div class="nub">
       <van-cell-group>
-        <van-field v-model="value" placeholder="请输入手机号" />
+        <van-field v-model="phone" placeholder="请输入手机号" />
       </van-cell-group>
       <van-cell-group>
-        <van-field v-model="sms" center clearable placeholder="请输入短信验证码">
-          <van-button slot="button" size="small" type="primary">获取验证码</van-button>
+        <van-field v-model="code" center clearable placeholder="请输入短信验证码">
+          <van-button slot="button" size="small" type="primary" @click="getcode(phone)">获取验证码</van-button>
         </van-field>
       </van-cell-group>
       <span>未注册过的手机将自动注册易果生鲜账户</span>
       <br />
       <br />
       <div class="loginButton">
-        <van-button type="primary" size="large">登陆</van-button>
+        <!-- @click="signupp({'tel':phone,'password':code})" -->
+        <van-button type="primary" size="large" @click="signupp()">注册</van-button>
       </div>
     </div>
     <div class="elseLogin">
@@ -38,7 +67,60 @@
     </div>
   </div>
 </template>
-<style  scoped>
+
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex';
+export default {
+  data() {
+    return {
+      show: false,
+      val: '1',
+      mima: '',
+      mima1: '',
+      code: '',
+      phone: '',
+      // password: '',
+    };
+  },
+  computed: {
+    ...mapState('user', {
+      //获取user模块的数据在当前组件显示
+      tel: 'tel',
+      password: 'password',
+    }),
+  },
+  methods: {
+    ...mapActions('user', {
+      signup: 'signup',
+      getcode: 'getcode',
+    }),
+    send() {
+      console.log('发送数据');
+      console.log(this.phone, this.code, this.mima, this.mima1);
+      let str = `phone=${this.phone}&code=${this.code}$`;
+      //login();
+    },
+    signupp() {
+      //this.show = true;
+      let str = 'phone=' + this.phone + '&code=' + this.code;
+      this.signup({
+        str: str,
+        $router: this.$router,
+      });
+    },
+  },
+};
+</script>
+
+<style >
+/* .van-popup__close-icon {
+  color: #32d683;
+  font-size: 30px;
+}
+.van-popup__close-icon--top-right {
+  right: 180px;
+  top: 140px;
+} */
 .nub {
   margin: 60px 46px 0 46px;
 }

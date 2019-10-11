@@ -14,7 +14,7 @@
       />
       <van-icon name="scan" color="white" size="22px" style="margin-left:15px" />
     </div>
-    <section style="overflow:auto;padding-bottom:80px">
+    <section style="overflow:auto;padding-bottom:80px" @scroll="onScroll">
       <div class="swipe">
         <van-swipe :autoplay="3000" indicator-color="red" indicator-background-color="black">
           <van-swipe-item v-for="(image, index) in images" :key="index">
@@ -25,20 +25,20 @@
 
       <nav>
         <figure>
-          <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
+          <img src="./../../../../public/images/1.jpg" style alt="图片加载失败" />
           <figcaption>买二付一</figcaption>
         </figure>
         <figure>
           <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
-          <figcaption>买二付一</figcaption>
+          <figcaption>新品荟萃</figcaption>
         </figure>
         <figure>
           <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
-          <figcaption>买二付一</figcaption>
+          <figcaption>会员尊享</figcaption>
         </figure>
         <figure>
           <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
-          <figcaption>买二付一</figcaption>
+          <figcaption>银行活动</figcaption>
         </figure>
       </nav>
       <div class="logo">
@@ -75,18 +75,11 @@
         </div>
       </div>
       <div class="product">
-        <div class="productLine" v-for="item in 3" :key="item.id">
-          <figure>
-            <img src="./../../../../public/images/homesmall/2.jpg" style="width:100%" />
-            <figcaption>美国樱桃</figcaption>
-          </figure>
-          <figure>
-            <img src="./../../../../public/images/homesmall/3.jpg" style="width:100%" />
-            <figcaption>鹰嘴芒果</figcaption>
-          </figure>
-          <figure>
-            <img src="./../../../../public/images/homesmall/4.jpg" style="width:100%" />
-            <figcaption>国产蓝莓4盒</figcaption>
+        <!--  v-for="item in 3" :key="item.id" -->
+        <div class="productLine">
+          <figure v-for="(item,index) in this.showproducts" :key="index">
+            <img :src="item.coverImg" />
+            <figcaption>{{item.name}}</figcaption>
           </figure>
         </div>
       </div>
@@ -94,39 +87,82 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex';
 export default {
+  created() {
+    this.getproduct().then(() => {
+      this.showproducts = this.products[8];
+    });
+  },
+  mounted() {
+    this.cloneObj = document.querySelector('.productLine');
+    this.sectionObj = document.querySelector('section');
+    this.parentObj = document.querySelector('.product');
+  },
   data() {
     return {
       value: 0,
-      value1: "",
+      value1: '',
       time: 30 * 60 * 60 * 1000,
       option: [
-        { text: "上海", value: 0 },
-        { text: "北京", value: 1 },
-        { text: "杭州", value: 2 }
+        { text: '上海', value: 0 },
+        { text: '北京', value: 1 },
+        { text: '杭州', value: 2 },
       ],
-      src: "",
+      src: '',
       images: [
-        "https://img.yzcdn.cn/vant/apple-2.jpg",
-        "https://img.yzcdn.cn/vant/apple-2.jpg",
-        "https://img.yzcdn.cn/vant/apple-1.jpg",
-        "https://img.yzcdn.cn/vant/apple-1.jpg",
-        "https://img.yzcdn.cn/vant/apple-2.jpg"
+        'http://img06.yiguoimg.com/d/others/180629/9288725230134493.jpg',
+        'http://img06.yiguoimg.com/d/others/180629/9288725230167261.jpg',
+        'http://img05.yiguoimg.com/d/others/180629/9288725230200029.jpg',
+        'http://img07.yiguoimg.com/d/others/180629/9288725230232797.jpg',
+        'http://img06.yiguoimg.com/d/others/180629/9288725230101725.jpg',
       ],
-      products: [
-        { id: "1", name: "苹果", url: "./../../../../public/images/3.jpg" }
-      ]
+      productss: [
+        { id: '1', name: '苹果', url: './../../../../public/images/3.jpg' },
+      ],
+      showproducts: [],
+      sectionObj: {},
+      cloneObj: {}, //图片不断加载克隆一个对象出来
+      parentObj: {},
     };
   },
-
+  computed: {
+    ...mapState('product', {
+      products: 'products',
+    }),
+  },
   methods: {
+    ...mapActions('product', {
+      getproduct: 'getproduct',
+    }),
     onConfirm() {
       this.$refs.item.toggle();
     },
     onSearch() {
-      console.log("aaa");
-    }
-  }
+      console.log('aaa');
+    },
+
+    onScroll() {
+      console.log(
+        '内部',
+        this.sectionObj.scrollHeight,
+        document.documentElement.clientHeight,
+        this.sectionObj.clientHeight,
+      );
+
+      console.log(this.sectionObj.scrollTop);
+      let top = this.sectionObj.scrollTop; // 滚动高度
+
+      //说明滚到底部了
+      if (
+        this.sectionObj.scrollHeight - top == this.sectionObj.clientHeight &&
+        top < 3000
+      ) {
+        let pro = this.cloneObj.cloneNode(true);
+        this.parentObj.appendChild(pro);
+      }
+    },
+  },
 };
 </script>
 
@@ -135,7 +171,7 @@ export default {
   width: 100%;
   height: 100%;
   font-size: 12px;
-  line-height: 12px;
+  line-height: 30px;
   display: flex;
   flex-direction: column;
   position: relative;
@@ -191,7 +227,9 @@ export default {
 .shouye .van-search__content .van-cell {
   height: 24px;
 }
-
+.shouye .van-field__body {
+  height: 24px;
+}
 .shouye i.van-icon.van-icon-search {
   height: 24px;
   line-height: 24px;
@@ -202,13 +240,14 @@ export default {
   line-height: 24px;
 }
 
-/* .van-dropdown-menu__title--down {
-  color: #fff !important;
-} */
-
 .shouye section {
   margin-top: 0px;
   font-size: 12px;
+  position: absolute;
+  top: 42px;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
 .shouye .swipe,
 .shouye .van-swipe {
@@ -250,7 +289,7 @@ export default {
   font-size: 12px;
   text-align: left;
   padding-right: 15px;
-  background: url("./../../../../public/images/homesmall/line.png") no-repeat
+  background: url('./../../../../public/images/homesmall/line.png') no-repeat
     top right;
   line-height: 13px;
 }
@@ -308,18 +347,26 @@ export default {
   padding-top: 10px;
 }
 .shouye .productLine {
+  width: 100%;
   display: flex;
+  align-content: space-between;
+  flex-wrap: wrap;
 }
 .shouye .productLine figure {
+  width: 33.3%;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.shouye .productLine figure:nth-of-type(2) {
-  margin: 0 15px;
+.shouye .productLine figure img {
+  width: 90%;
 }
+.shouye .productLine figure figcaption {
+  margin: 5px 0;
+}
+
 .shouye .item {
   display: inline-block;
   width: 22px;

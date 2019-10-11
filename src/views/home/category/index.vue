@@ -1,51 +1,64 @@
 <template>
   <div class="category">
-    <div class="top">
+    <div class="top" style="height:70px">
       <Top></Top>
     </div>
     <div class="mainContent">
       <div class="left">
         <van-sidebar v-model="activeKey">
-          <van-sidebar-item title="热门推荐" />
-          <van-sidebar-item title="进口水果" />
-          <van-sidebar-item title="国产水果" />
-          <van-sidebar-item title="精选肉类" />
-          <van-sidebar-item title="海鲜水产" />
-          <van-sidebar-item title="禽类蛋品" />
-          <van-sidebar-item title="乳品糕点" />
-          <van-sidebar-item title="新鲜蔬菜" />
-          <van-sidebar-item title="油粮杂货" />
+          <van-sidebar-item :title="item.name" v-for="(item,index) in categories" :key="index" />
         </van-sidebar>
       </div>
       <div class="right">
-        <div class="goodsList" v-for="i in 42 " :key="i" @click="goDetail(i)">
-          <img src="../../../assets/straw.png" alt />
-          <p>草莓</p>
+        <div
+          class="goodsList"
+          v-for="(item,index) in products[activeKey] "
+          :key="index"
+          @click="goDetail(item)"
+        >
+          <img :src="item.coverImg" alt />
+          <p>{{item.name}}</p>
         </div>
       </div>
     </div>
   </div>
 </template>
 <script>
-import Top from "../../../components/Header";
+import Top from '../../../components/Header';
+import { mapState, mapActions } from 'vuex';
 export default {
   components: {
-    Top
+    Top,
+  },
+  created() {
+    this.getproduct();
   },
   data() {
     return {
-      activeKey: 0
+      activeKey: 0,
     };
   },
+  computed: {
+    ...mapState('product', {
+      categories: 'categories',
+      products: 'products',
+    }),
+  },
   methods: {
-    goDetail(i) {
-      this.$router.push(`detail/${i}`);
-    }
-  }
+    ...mapActions('product', {
+      getproduct: 'getproduct',
+    }),
+
+    goDetail(item) {
+      console.log(item);
+      //this.$router.push(`detail`);
+      this.$router.push({ name: 'detail', params: { detail: item } });
+    },
+  },
 };
 </script>
 <style scoped>
-@import "../../../css/category.scss";
+@import '../../../css/category.scss';
 </style>
 
 

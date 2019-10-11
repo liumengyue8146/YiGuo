@@ -7,7 +7,8 @@
     </van-sticky>
     <!-- middle -->
     <div id="middle">
-      <router-link :to="{name:'newAddress'}">
+      <!--  -->
+      <router-link :to="{name:'addressList',params:{current:1}}">
         <div class="address">
           <van-icon class="icon1" name="location-o" />
           <van-cell class="cell1" title="添加收获地址" is-link />
@@ -64,13 +65,58 @@
       <div class="allprice">
         <p>
           应付金额
-          <em>￥537.12</em>
+          <em id="orderprice">￥{{this.order[this.order.length-1]}}</em>
         </p>
-        <a>去结算</a>
+        <a @click="submitOrder">去结算</a>
       </div>
     </div>
   </div>
 </template>
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex';
+import { getToken } from './../utils/auth';
+export default {
+  data() {
+    return {
+      orderDetails: [],
+    };
+  },
+  created() {
+    //this.orderDetails = this.$route.params.orderDetails;
+    console.log('商品订单详情', this.$route.params.orderDetails);
+    if (this.$route.params.orderDetails) {
+      this.updateOrder(this.$route.params.orderDetails);
+    }
+
+    //console.log(33, this.$route.params.orderDetails);
+  },
+  computed: {
+    ...mapState('address', {
+      addresslist: 'addresslist',
+      defaultaddress: 'defaultaddress',
+      order: 'order',
+    }),
+  },
+  methods: {
+    ...mapMutations('address', {
+      updateOrder: 'updateOrder',
+    }),
+    ...mapActions('order', {
+      addpay: 'addpay',
+    }),
+    onClickLeft() {},
+    onClickRight() {},
+    submitOrder() {
+      console.log(44, this.order);
+      console.log(this.defaultaddress);
+      let obj = this.defaultaddress;
+      obj.orderDetails = this.order.splice(0, this.order.length - 1);
+      obj.userid = getToken();
+      this.addpay(obj);
+    },
+  },
+};
+</script>
 <style scoped>
 .app {
   height: 100%;

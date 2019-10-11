@@ -5,12 +5,12 @@
 </template>
 <script>
 export default {
-  name: "Header",
+  name: 'Header',
   data() {
     return {
-      value: ""
+      value: '',
     };
-  }
+  },
 };
 </script>
 <style scoped>

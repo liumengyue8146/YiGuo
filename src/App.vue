@@ -11,6 +11,10 @@
     <router-view v-if="!$route.meta.keepAlive" />
   </div>
 </template>
+<script>
+import { mapState, mapActions, mapMutations } from 'vuex';
+export default {};
+</script>
 <style>
 #app .van-tabbar {
   position: fixed;

@@ -2,10 +2,67 @@
   <div class="main">
     <van-nav-bar title="我的订单" :left-arrow="true" @click-left="onClickLeft" />
     <van-tabs v-model="active" title-active-color="#0BB379" color="#0BB379">
-      <van-tab title="全部">内容 1</van-tab>
-      <van-tab title="待支付">内容 2</van-tab>
-      <van-tab title="待收货">内容 3</van-tab>
-      <van-tab title="待评价">内容 4</van-tab>
+      <van-tab title="全部">
+        <div v-for="(item,index) in this.list" :key="index">
+          <van-card
+            :price="item.price"
+            :desc="'收货地址：'+item.address"
+            :title="'编号：'+item.no"
+            thumb="http://img14.yiguoimg.com/d/items/2019/190329/9288737676928637_500.jpg"
+          >
+            <div slot="footer">
+              <van-button size="mini" type="primary">待支付</van-button>
+              <van-button size="mini" type="warning">待评价</van-button>
+              <van-button size="mini" type="danger">删除</van-button>
+            </div>
+          </van-card>
+        </div>
+      </van-tab>
+      <van-tab title="待支付">
+        <div v-for="(item,index) in this.list" :key="index">
+          <van-card
+            :price="item.price"
+            :desc="'收货地址：'+item.address"
+            :title="'编号：'+item.no"
+            thumb="http://img09.yiguoimg.com/d/items/2019/190809/9288738788386569_500.jpg"
+          >
+            <div slot="footer">
+              <van-button size="mini" type="primary">支付</van-button>
+              <van-button size="mini" type="danger">删除</van-button>
+            </div>
+          </van-card>
+        </div>
+      </van-tab>
+      <van-tab title="待收货">
+        <div v-for="(item,index) in this.list" :key="index">
+          <van-card
+            :price="item.price"
+            :desc="'收货地址：'+item.address"
+            :title="'编号：'+item.no"
+            thumb="http://img09.yiguoimg.com/d/items/2018/180808/9288727987627272_500.jpg"
+          >
+            <div slot="footer">
+              <van-button size="mini" type="primary">收货</van-button>
+              <van-button size="mini" type="danger">删除</van-button>
+            </div>
+          </van-card>
+        </div>
+      </van-tab>
+      <van-tab title="待评价">
+        <div v-for="(item,index) in this.list" :key="index">
+          <van-card
+            :price="item.price"
+            :desc="'收货地址：'+item.address"
+            :title="'编号：'+item.no"
+            thumb="http://img09.yiguoimg.com/d/items/2019/190809/9288738784126729_500.jpg"
+          >
+            <div slot="footer">
+              <van-button size="mini" type="primary">收货</van-button>
+              <van-button size="mini" type="danger">删除</van-button>
+            </div>
+          </van-card>
+        </div>
+      </van-tab>
     </van-tabs>
     <!-- <div class="go" v-if="show">去逛逛</div> -->
     <div class="product">
@@ -96,36 +153,47 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions, mapMutations } from 'vuex';
+import { getToken } from './../../../utils/auth';
 export default {
+  created() {
+    this.getpay(getToken()).then(res => {
+      this.list = res.orders;
+    });
+  },
   data() {
     return {
       active: 0,
       show: 0,
-      index: 0
+      index: 0,
+      list: [],
     };
   },
   methods: {
+    ...mapActions('order', {
+      getpay: 'getpay',
+    }),
     onClickLeft() {
-      Toast("返回");
+      this.$router.go(-1);
     },
     buyCard() {
-      console.log("去买卡");
+      console.log('去买卡');
     },
     bindCard() {
-      console.log("去绑卡");
+      console.log('去绑卡');
     },
     addNum() {
       console.log(this.$el, this.index);
       console.log(
-        document.querySelectorAll(".van-swipe-item")[this.indedx].find(".num")
+        document.querySelectorAll('.van-swipe-item')[this.indedx].find('.num'),
       );
     },
     onChange(i) {
       this.index = i;
       //var oItem = document.querySelectorAll(".van-swipe-item")[this.indedx];
       //var oPrice = oItem.children(".num");
-    }
-  }
+    },
+  },
 };
 </script>
 <style scoped>
@@ -135,7 +203,7 @@ export default {
   display: flex;
   flex-direction: column;
 
-  background: #f4f4f4 url("./../../../../public/images/noorder.png") no-repeat
+  background: #f4f4f4 url('./../../../../public/images/noorder.png') no-repeat
     130px 200px;
 }
 .main .van-nav-bar {

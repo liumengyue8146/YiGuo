@@ -13,10 +13,10 @@
     <!-- middle -->
     <div class="main">
       <van-cell-group>
-        <van-field v-model="name" class="filed" value=" " label="收货人姓名：" />
-        <van-field v-model="tel" label="手机号码：" />
-        <van-field v-model="bigAddress" label="所在地区：" is-link @click="showPopup" />
-        <van-field v-model="smallAddress" label="详细地址：" />
+        <van-field v-model="people.receiver" class="filed" value=" " label="收货人姓名：" />
+        <van-field v-model="people.mobile" label="手机号码：" />
+        <van-field v-model="people.regions" label="所在地区：" is-link @click="showPopup" />
+        <van-field v-model="people.address" label="详细地址：" />
         <div class="address">
           <span>地址类型：</span>
           <van-radio-group v-model="radio" class="radio">
@@ -34,9 +34,18 @@
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex';
+import { getToken } from './../utils/auth';
 export default {
   data() {
     return {
+      people: {
+        receiver: '',
+        mobile: '',
+        regions: '',
+        address: '',
+        isDefault: false,
+      },
       name: '',
       tel: 0,
       bigAddress: '',
@@ -72,6 +81,9 @@ export default {
     };
   },
   methods: {
+    ...mapActions('address', {
+      addaddress: 'addaddress',
+    }),
     showPopup() {
       this.show = true;
     },
@@ -89,13 +101,11 @@ export default {
     // 右上角点击保存跳地址列表页
     onClickRight(val) {
       var allInputs = document.getElementsByTagName('input'); //所有input
-      // 输出输入框的值
-      console.log(this.name);
-      console.log(this.tel);
-      console.log(this.bigAddress);
-      console.log(this.smallAddress);
-      console.log(this.radio);
-      console.log(this.checked);
+
+      console.log(this.people);
+      this.people.userid = getToken();
+      this.addaddress(this.people);
+      this.$router.push({ name: 'addressList' });
     },
   },
 };

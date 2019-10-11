@@ -15,7 +15,7 @@
           <img src="@/assets/01.png" />
         </div>
         <div class="right1">
-          <h2>欧克yoyo</h2>
+          <h2>{{this.person.name}}</h2>
           <h3>普卡</h3>
           <p>当前累积商品实付金额0.00</p>
         </div>
@@ -73,7 +73,9 @@
         <dt>
           <van-icon name="apps-o" />
         </dt>
-        <dd>全部订单</dd>
+        <router-link :to="{name:'myorder'}">
+          <dd>全部订单</dd>
+        </router-link>
       </dl>
     </div>
     <!-- 下面 -->
@@ -164,8 +166,27 @@
   </div>
 </template>
 <script>
-import me from "@/css/liu/me.css";
-export default {};
+import me from '@/css/liu/me.css';
+import { mapState, mapActions, mapMutations } from 'vuex';
+import { getToken } from '@/utils/auth.js';
+export default {
+  created() {
+    if (getToken()) {
+      const token = '5d93dae27185790438203b58';
+      this.getpersonal({ token: token });
+    }
+  },
+  computed: {
+    ...mapState('user', {
+      person: 'person',
+    }),
+  },
+  methods: {
+    ...mapActions('user', {
+      getpersonal: 'getpersonal',
+    }),
+  },
+};
 </script>
 <style scoped>
 .app {

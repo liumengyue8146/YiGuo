@@ -11,84 +11,198 @@
       />
     </van-sticky>
 
-    <div class="card">
+    <div class="card" v-for="(item, index) in this.mycart" :key="index">
       <div class="card1">
-        <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
+        <van-checkbox class="left" v-model="item.checked" checked-color="#07c160" @change="istotal"></van-checkbox>
         <van-card
           class="right"
           align="left"
-          price="2.00"
-          desc="123456"
-          title="商品标题描述信息描述信息描述信息描述信息描述信息"
-          thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
+          :price="item.price"
+          :desc="item.description"
+          :title="item.name"
+          :thumb="item.coverImg"
         >
           <div slot="bottom" class="card1Bottom">
-            <span>￥2.00</span>
-            <van-stepper v-model="value" class="step" />
+            <span class="perPrice">￥{{item.price*item.quantity}}</span>
+            <van-stepper
+              v-model="item.quantity"
+              class="step"
+              @change="istotal"
+              @plus="plus(item)"
+              @minus="minus(item)"
+            />
           </div>
         </van-card>
       </div>
-      <!-- card2 -->
-      <div class="card1">
-        <van-checkbox class="left" v-model="checked" checked-color="#07c160"></van-checkbox>
-        <van-card
-          class="right"
-          align="left"
-          price="2.00"
-          title="商品标题描述信息描述信息描述信息描述信息描述信息"
-          thumb="https://img.yzcdn.cn/vant/t-thirt.jpg"
-        >
-          <div slot="bottom" class="card1Bottom">
-            <span>￥2.00</span>
-            <van-stepper v-model="value" class="step" />
-          </div>
-        </van-card>
-      </div>
-
-      <!-- end -->
     </div>
     <!-- 结算部分1 -->
     <div class="allPrice" v-if="this.state">
       <van-checkbox class="van-checkbox" v-model="checked" checked-color="#07c160">全选</van-checkbox>
       <div class="price">
         <i>
-          合计(不含优惠):
-          <b>￥238</b>
+          合计(不含运费):
+          <b @click="total" id="allPrice">￥0</b>
         </i>
         <br />
         <span>已优惠:0.00</span>
       </div>
-      <a>去结算</a>
+      <a @click="submitHandle">提交订单</a>
     </div>
     <!-- 结算部分2  -->
     <div class="allPrice2" v-if="!this.state">
       <van-checkbox class="van-checkbox" v-model="checked" checked-color="#07c160">全选</van-checkbox>
       <span>移入收藏夹</span>
-      <a>删除</a>
+      <a @click="removemycart">删除</a>
     </div>
   </div>
 </template>
 <script>
+import { mapState, mapActions } from 'vuex';
+import { getToken } from '@/utils/auth';
+import { async, all } from 'q';
+import { Dialog } from 'vant';
 export default {
+  created() {
+    //const token = getToken();
+    this.getcart(this.token).then(() => {
+      this.total();
+    });
+  },
   data() {
     return {
+      token: getToken(),
       value: 1,
       checked: true,
-      state: true
+      state: true,
+      remove: [], //删除购物车的id
+      orderDetails: [],
     };
   },
+  computed: {
+    ...mapState('product', {
+      carts: 'carts',
+      mycart: 'mycart',
+    }),
+  },
   methods: {
+    ...mapActions('product', {
+      getcart: 'getcart',
+      getdetail: 'getdetail',
+      addcart: 'addcart',
+      removecart: 'removecart',
+    }),
     toggle(index) {
       this.$refs.checkboxes[index].toggle();
     },
     // 右侧编辑
     onClickRight() {
       this.state = !this.state;
-    }
+      //如果是在删除页，则初始化要删除的购物车id，this.remove
+      if (!this.state) {
+      }
+    },
+
+    //商品数量加1存到后台购物车中
+    plus(item) {
+      this.addcart({
+        token: this.token,
+        productid: item._id,
+        quantity: 1,
+      });
+    },
+
+    //商品数量减1存到后台购物车中
+    minus(item) {
+      this.addcart({
+        token: this.token,
+        productid: item._id,
+        quantity: -1,
+      });
+    },
+
+    //结算页还是编辑页
+    istotal(status) {
+      this.editcheckbox(status);
+      if (this.state) {
+        this.total(); //如果在结算页执行结算函数,否则执行删除购物车
+      } else {
+        //this.removemycart();
+      }
+    },
+
+    //删除购物车
+    removemycart() {
+      Dialog.confirm({
+        title: '确认删除吗',
+      })
+        .then(() => {
+          this.remove = [];
+          for (let item of this.mycart) {
+            if (item.checked) {
+              this.remove.push(item.cartid);
+            }
+          }
+          console.log('要删除的购物车', this.remove);
+          this.removecart(this.remove).then(() => {
+            window.location.reload();
+          });
+        })
+        .catch(() => {});
+    },
+
+    //复选框的变化
+    editcheckbox(status) {
+      //是否选中这条商品信息
+      if (status == false) {
+        this.checked = false;
+      } else if (status == true) {
+        let num = 0;
+        document
+          .querySelectorAll('.left.van-checkbox')
+          .forEach((item, index) => {
+            if (item.getAttribute('aria-checked') == 'true') {
+              num++;
+            }
+          });
+        if (num == this.mycart.length - 1) {
+          this.checked = true;
+        }
+      }
+    },
+
+    //计算总价
+    total() {
+      //let perProduct = document.querySelectorAll('.card1');
+      let allPrice = 0;
+      for (let item of this.mycart) {
+        if (item.checked) {
+          allPrice += item.quantity * item.price;
+        }
+      }
+      document.getElementById('allPrice').innerText = '￥' + allPrice;
+      return allPrice;
+    },
+
+    //提交订单,数量，商品id，商品单价[{quantity,product,price}]
+    submitHandle() {
+      this.orderDetails = [];
+      this.mycart.forEach(item => {
+        if (item.checked) {
+          let obj = {};
+          obj.product = item.cartid;
+          obj.price = item.price;
+          obj.quantity = item.quantity;
+          this.orderDetails.push(obj);
+        }
+      });
+      console.log(this.orderDetails);
+      this.orderDetails.push(this.total());
+      this.$router.push({
+        name: 'payforOrder',
+        params: { orderDetails: this.orderDetails },
+      });
+    },
   },
-  mounted() {
-    // card();
-  }
 };
 </script>
 
@@ -114,6 +228,20 @@ export default {
   display: flex;
   justify-content: space-around;
 }
+.card .card1Bottom {
+  height: 30px;
+  width: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  bottom: 0;
+}
+
+.van-card__bottom {
+  flex-grow: 1;
+}
+
 .allPrice {
   position: fixed;
   left: 0;
