@@ -62,7 +62,7 @@
   color: white;
 }
 .addCart {
-  height: 70px;
+  height: 40px;
   width: 100%;
   display: flex;
 }
@@ -71,10 +71,10 @@
 }
 .cartIcon {
   width: 25%;
-  height: 70px;
+  height: 40px;
 }
 .addCart .van-icon-shopping-cart-o {
-  font-size: 36px;
+  font-size: 20px;
   display: block;
   width: 100%;
   text-align: center;
@@ -82,20 +82,20 @@
 }
 .cartIcon p {
   width: 100%;
-  line-height: 34px;
-  font-size: 20px;
+  line-height: 20px;
+  font-size: 16px;
   text-align: center;
   color: #999999;
 }
 .addCart .addCartBtn {
   width: 75%;
-  height: 70px;
+  height: 40px;
   background: #fe6454;
-  font-size: 36px;
+  font-size: 24px;
   font-weight: 500;
   color: #ffd9d5;
   text-align: center;
-  line-height: 70px;
+  line-height: 40px;
 }
 .displaySwipe {
   width: 100%;

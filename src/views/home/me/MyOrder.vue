@@ -233,7 +233,9 @@ export default {
 .main .van-tabs.van-tabs--line {
   /* height: 150px; */
   flex-grow: 1;
+  overflow: auto;
 }
+
 .main .go {
   width: 133px;
   height: 34px;

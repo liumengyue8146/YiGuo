@@ -51,6 +51,7 @@
   </div>
 </template>
 <script>
+import { Toast } from 'vant';
 import { mapState, mapActions } from 'vuex';
 import { getToken, setToken, removeToken } from '@/utils/auth';
 export default {
@@ -95,6 +96,12 @@ export default {
         productid: this.product._id,
         token: getToken(),
         quantity: this.product.quantity,
+      }).then(res => {
+        if (res.code == 'success') {
+          Toast('添加成功');
+        } else {
+          Toast('添加失败');
+        }
       });
       // this.$router.push({
       //   name: 'cart',

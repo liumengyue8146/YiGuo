@@ -126,7 +126,7 @@
 export default {
   data() {
     return {
-      show: false
+      show: false,
     };
   },
   methods: {
@@ -134,11 +134,9 @@ export default {
       this.show = true;
     },
     onClickLeft() {
-      this.$router.push({
-        name: "home"
-      });
-    }
-  }
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 <style scoped>

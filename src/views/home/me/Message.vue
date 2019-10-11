@@ -1,6 +1,6 @@
 <template>
   <div class="message">
-    <van-nav-bar title="消息" left-arrow />
+    <van-nav-bar title="消息" left-arrow @click-left="onClickLeft" />
     <div class="messageContent">
       <div class="receiveMessage" v-for="i in 20" :key="i">
         <h2>今个儿&nbsp;&nbsp;08:03</h2>
@@ -21,10 +21,15 @@
 </template>
 <script>
 export default {
-  name: "message",
+  name: 'message',
   data() {
     return {};
-  }
+  },
+  methods: {
+    onClickLeft() {
+      this.$router.go(-1);
+    },
+  },
 };
 </script>
 <style scoped>
@@ -38,8 +43,11 @@ export default {
 
 .message .van-nav-bar {
   border-bottom: 1px solid rgba(238, 238, 238, 1);
-  height: 80px;
-  line-height: 80px;
+  height: 32px;
+  line-height: 32px;
+}
+.message .van-nav-bar__title[data-v-31aa1314] {
+  font-size: 20px;
 }
 .message .van-icon-arrow-left {
   color: black;
@@ -103,7 +111,7 @@ export default {
   font-size: 16px;
   line-height: 24px;
   margin-top: 10px;
-  font-weight: 500
+  font-weight: 500;
 }
 .messageRight p {
   color: gray;

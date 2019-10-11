@@ -35,9 +35,11 @@ import Message from './views/home/me/Message.vue';
 import Card from './views/home/me/Card.vue'; //我的卡包
 import MyOrder from './views/home/me/MyOrder.vue'; //我的订单
 
+import { getToken } from './utils/auth';
+
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   routes: [
     // 首页路由
     {
@@ -90,6 +92,7 @@ export default new Router({
       component: Cart,
       meta: {
         keepAlive: true,
+        needLogin: true,
       },
     },
     {
@@ -98,6 +101,7 @@ export default new Router({
       component: Me,
       meta: {
         keepAlive: true,
+        needLogin: true,
       },
     },
     // 帮助中心
@@ -185,7 +189,7 @@ export default new Router({
 
     {
       path: '/login',
-      name: 'login',
+      name: 'Login',
       component: Login,
       meta: {
         keepAlive: false,
@@ -252,3 +256,19 @@ export default new Router({
     },
   ],
 });
+
+router.beforeEach((to, from, next) => {
+  if (to.meta.needLogin) {
+    if (getToken()) {
+      next();
+    } else {
+      next({
+        name: 'Login',
+      });
+    }
+  } else {
+    next();
+  }
+});
+
+export default router;

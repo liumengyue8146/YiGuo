@@ -50,6 +50,8 @@ const user = {
         });
         // $router.push("accman");
         //this.$router.push({ name: 'accman' });
+      } else {
+        Toast.fail('手机号已注册！');
       }
     },
     //用户登录

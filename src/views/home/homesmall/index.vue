@@ -28,22 +28,29 @@
           <img src="./../../../../public/images/1.jpg" style alt="图片加载失败" />
           <figcaption>买二付一</figcaption>
         </figure>
-        <figure>
-          <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
-          <figcaption>新品荟萃</figcaption>
-        </figure>
-        <figure>
-          <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
-          <figcaption>会员尊享</figcaption>
-        </figure>
-        <figure>
-          <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
-          <figcaption>银行活动</figcaption>
-        </figure>
+        <router-link :to="{name:'theNewGood'}">
+          <figure>
+            <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
+            <figcaption>新品荟萃</figcaption>
+          </figure>
+        </router-link>
+        <router-link :to="{name:'memberEnjoy'}">
+          <figure>
+            <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
+            <figcaption>会员尊享</figcaption>
+          </figure>
+        </router-link>
+        <router-link :to="{name:'coinDetails'}">
+          <figure>
+            <img src="./../../../../public/images/1.jpg" alt="图片加载失败" />
+            <figcaption>银行活动</figcaption>
+          </figure>
+        </router-link>
       </nav>
       <div class="logo">
         <h3>
-          <span class="logol">易果</span>
+          <em class="logol">易果</em>
+
           <span class="logor">快报</span>
         </h3>
         <p>
@@ -138,19 +145,9 @@ export default {
     onConfirm() {
       this.$refs.item.toggle();
     },
-    onSearch() {
-      console.log('aaa');
-    },
+    onSearch() {},
 
     onScroll() {
-      console.log(
-        '内部',
-        this.sectionObj.scrollHeight,
-        document.documentElement.clientHeight,
-        this.sectionObj.clientHeight,
-      );
-
-      console.log(this.sectionObj.scrollTop);
       let top = this.sectionObj.scrollTop; // 滚动高度
 
       //说明滚到底部了
@@ -267,7 +264,7 @@ export default {
 .shouye figcaption {
   padding: 0;
   margin: 0;
-  font-size: 12px;
+  font-size: 14px;
   color: #666;
 }
 .shouye figure img {
@@ -286,7 +283,7 @@ export default {
 .shouye .logo h3 {
   width: 57px;
   height: 13px;
-  font-size: 12px;
+  font-size: 14px;
   text-align: left;
   padding-right: 15px;
   background: url('./../../../../public/images/homesmall/line.png') no-repeat
@@ -313,22 +310,26 @@ export default {
   padding-left: 10px;
 }
 .shouye .countdown {
-  height: 39px;
+  height: 53px;
 }
 .shouye .countdown h3 {
+  text-align: center;
   color: #333333;
-  height: 22px;
-  line-height: 22px;
+  height: 30px;
+  line-height: 28px;
+  font-size: 18px;
   margin: 0;
 }
 .shouye .countdown .count {
   display: flex;
-  height: 17px;
+  height: 20px;
   justify-content: center;
+  align-items: center;
 }
 .shouye .countdown .count h4 {
   margin: 0;
-  height: 17px;
+  height: 30px;
+  padding: 0;
 }
 .shouye .countdown .count h4 span {
   color: #5bc6a0;

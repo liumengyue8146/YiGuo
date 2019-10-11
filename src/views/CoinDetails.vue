@@ -42,11 +42,10 @@
 export default {
   methods: {
     onClickLeft() {
-      this.$router.push({
-        name: "me"
-      });
-    }
-  }
+      this.$router.go(-1);
+    },
+    onClickRight() {},
+  },
 };
 </script>
 <style scoped>

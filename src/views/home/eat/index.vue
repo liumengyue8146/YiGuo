@@ -1,5 +1,5 @@
 <template>
-  <div class="main">
+  <div class="main eat">
     <van-nav-bar title="吃饭吧-易果内容频道" :left-arrow="false" :fixed="true" @click-right="onClickRight">
       <img src="./../../../../public/images/eat/share.png" name="search" slot="right" />
     </van-nav-bar>
@@ -12,7 +12,7 @@
       </van-grid>
     </van-popup>
     <section>
-      <van-tabbar route :fixed="true" v-model="active">
+      <van-tabbar route v-model="active">
         <van-tabbar-item :to="{name:'eat'}">
           <span>做美食</span>
           <img slot="icon" src="./../../../../public/images/eat/meishi.png" />
@@ -60,21 +60,21 @@ export default {
   methods: {
     onClickRight() {
       this.show = true;
-    }
+    },
   },
   data() {
     return {
       active: 0,
       show: false,
       icon: {
-        normal: "//img.yzcdn.cn/icon-normal.png",
-        active: "./../../../../public/images/eat/share.png"
-      }
+        normal: '//img.yzcdn.cn/icon-normal.png',
+        active: './../../../../public/images/eat/share.png',
+      },
     };
-  }
+  },
 };
 </script>
 <style scoped>
-@import "./../../../css/eat.css";
+@import './../../../css/eat.css';
 </style>
 

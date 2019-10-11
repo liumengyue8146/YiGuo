@@ -15,7 +15,7 @@
         </div>
       </router-link>
 
-      <van-cell title="共4件商品" is-link value="内容" />
+      <van-cell :title="'共'+(this.order.length-1)+'种商品'" is-link value="内容" />
       <div class="goods">
         <img src="@/assets/food01.png" />
         <img src="@/assets/food01.png" />
@@ -23,7 +23,7 @@
         <img src="@/assets/food01.png" />
       </div>
       <div class="middle">
-        <van-cell title="配送日期" is-link value="该收获地不支持配送" />
+        <van-cell title="收货地址" is-link :value="this.defaultaddress.address" />
         <van-cell title="发票日期" is-link value="不支持发票" />
         <van-cell>
           <!-- 使用 title 插槽来自定义标题 -->
@@ -50,15 +50,15 @@
       <!-- 合计 -->
       <div class="middle">
         <van-cell-group>
-          <van-cell title="商品合计" value="￥300" />
-          <van-cell title="运费" value="￥10" />
-          <van-cell title="优惠活动" value="￥100" />
+          <van-cell title="商品合计" value="￥0" />
+          <van-cell title="运费" value="￥0" />
+          <van-cell title="优惠活动" value="￥0" />
         </van-cell-group>
       </div>
       <!-- 应付金额 -->
       <div class="middle">
         <van-cell-group>
-          <van-cell title="应付金额" value="￥210" />
+          <van-cell title="应付金额" :value="'￥' +this.order[this.order.length-1]" />
         </van-cell-group>
       </div>
       <!-- 结算 -->
@@ -112,7 +112,11 @@ export default {
       let obj = this.defaultaddress;
       obj.orderDetails = this.order.splice(0, this.order.length - 1);
       obj.userid = getToken();
-      this.addpay(obj);
+      this.addpay(obj).then(() => {
+        this.$router.push({
+          name: 'myorder',
+        });
+      });
     },
   },
 };
@@ -210,7 +214,7 @@ export default {
 .goods {
   height: 50px;
   width: 100%;
-  background: pink;
+  background: #fff;
   display: flex;
 }
 .goods img {
